@@ -45,6 +45,9 @@ export default function About() {
               Currently working as a QA Lead at Teamviewer, ensuring robust software quality and efficient testing cycles.
             </p>
             <p>
+              I am also pursuing my studies in Artificial Intelligence at JKU, where I dive deep into Large Language Models (LLMs) and their applications in software engineering.
+            </p>
+            <p>
               My team has delivered award-winning quality in the past, and I am always looking for new ways to optimize testing pipelines.
             </p>
           </div>
