@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -13,10 +14,13 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
            <div className="aspect-[3/4] bg-pastel-green/30 rounded-lg overflow-hidden relative border border-pastel-green/50">
-             {/* Placeholder for About Image */}
-             <div className="absolute inset-0 flex items-center justify-center text-foreground/50">
-                Image Placeholder
-             </div>
+             <Image 
+               src="/profile.jpg"
+               alt="Khaled Yousef"
+               fill
+               className="object-cover"
+               priority
+             />
            </div>
         </motion.div>
 
