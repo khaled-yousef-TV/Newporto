@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pastel Palette */
+  --background: #FFFDF5; /* Cream */
+  --foreground: #4A4A4A; /* Dark Grey */
+  
+  --color-primary: #FFB7B2; /* Pastel Pink */
+  --color-secondary: #B5EAD7; /* Pastel Green */
+  --color-tertiary: #C7CEEA; /* Pastel Purple */
+  --color-quaternary: #E2F0CB; /* Pastel Lime */
 }
 
 @theme inline {
@@ -10,12 +16,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  --color-pastel-pink: var(--color-primary);
+  --color-pastel-green: var(--color-secondary);
+  --color-pastel-purple: var(--color-tertiary);
+  --color-pastel-lime: var(--color-quaternary);
 }
 
 @media (prefers-color-scheme: dark) {
+  /* Keeping the same pastel theme even in dark mode for this specific request, 
+     or we could invert it. Let's keep the light pastel theme as requested. */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+      --background: #FFFDF5;
+      --foreground: #4A4A4A;
   }
 }
 

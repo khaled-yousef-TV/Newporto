@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bettina Sosa | Software Engineer",
-  description: "Portfolio of Bettina Sosa, a software engineer with a passion for innovation and cutting-edge technology.",
+  title: "Khaled Yousef | Software Engineer",
+  description: "Portfolio of Khaled Yousef, a software engineer with a passion for innovation and cutting-edge technology.",
 };
 
 export default function RootLayout({

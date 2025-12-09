@@ -12,9 +12,9 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-           <div className="aspect-[3/4] bg-neutral-800 rounded-lg overflow-hidden relative">
+           <div className="aspect-[3/4] bg-pastel-green/30 rounded-lg overflow-hidden relative border border-pastel-green/50">
              {/* Placeholder for About Image */}
-             <div className="absolute inset-0 flex items-center justify-center text-neutral-500">
+             <div className="absolute inset-0 flex items-center justify-center text-foreground/50">
                 Image Placeholder
              </div>
            </div>
@@ -27,9 +27,9 @@ export default function About() {
            transition={{ duration: 0.8 }}
            className="space-y-8"
         >
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-foreground">About Me</h2>
           
-          <div className="space-y-6 text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
+          <div className="space-y-6 text-lg md:text-xl text-foreground/70 font-light leading-relaxed">
             <p>
               A software engineer with a passion for innovation and cutting-edge technology.
             </p>
@@ -37,7 +37,7 @@ export default function About() {
               Particularly interested in the intersection of art, design, and software. 
               I believe that these disciplines can be combined to create truly transformative experiences.
             </p>
-            <p className="text-white font-medium">
+            <p className="text-pastel-purple font-medium">
               Currently the founding full stack software engineer @Catapult a DeFi startup.
             </p>
             <p>
@@ -49,4 +49,3 @@ export default function About() {
     </section>
   );
 }
-
