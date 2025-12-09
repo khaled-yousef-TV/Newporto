@@ -34,14 +34,13 @@ export default function QAAnimation() {
             animate={{
               scale: isActive ? 1.1 : 1,
               opacity: isActive || isPassed ? 1 : 0.3,
-              color: isActive || isPassed ? "#B5EAD7" : "#4A4A4A" // Pastel Green for active/passed
             }}
             className="flex flex-col items-center gap-2"
           >
-            <div className={`p-3 rounded-full border-2 ${isActive || isPassed ? "border-pastel-green bg-pastel-green/20" : "border-foreground/20"}`}>
+            <div className={`p-3 rounded-full border-2 ${isActive || isPassed ? "border-pastel-purple bg-pastel-purple/20" : "border-foreground/20"}`}>
                <Icon size={24} />
             </div>
-            <span className="text-xs uppercase tracking-widest font-bold">{item.label}</span>
+            <span className={`text-xs uppercase tracking-widest font-bold ${isActive || isPassed ? "text-pastel-purple" : "text-foreground/50"}`}>{item.label}</span>
           </motion.div>
         );
       })}

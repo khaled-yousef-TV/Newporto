@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark Tech Palette */
-  --background: #0a0a0a; /* Deep Black */
-  --foreground: #ededed; /* Off-white text */
+  /* Zach Jordan Palette */
+  --background: #121212; /* Dark background */
+  --foreground: #ffffff; /* White text */
   
-  --color-primary: #00ff9d; /* Neon Green (QA Pass) */
-  --color-secondary: #7000ff; /* Electric Purple */
-  --color-tertiary: #00d2ff; /* Cyan */
-  --color-quaternary: #ff0055; /* Neon Red */
+  --color-primary: #3b82f6; /* Blue */
+  --color-secondary: #ef4444; /* Red */
+  --color-tertiary: #10b981; /* Green */
+  --color-quaternary: #f59e0b; /* Amber/Yellow */
   
-  --color-dark-surface: #171717;
+  --color-dark-surface: #1e1e1e; /* Slightly lighter card bg */
 }
 
 @theme inline {
@@ -19,18 +19,19 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  --color-pastel-green: var(--color-primary); /* Keeping variable name for compatibility but mapped to neon */
-  --color-pastel-purple: var(--color-secondary);
-  --color-pastel-pink: var(--color-quaternary);
-  --color-pastel-lime: var(--color-tertiary);
+  /* Mapping the Zach Jordan colors to our existing variables */
+  --color-pastel-green: var(--color-tertiary); /* Maps to Green */
+  --color-pastel-purple: var(--color-primary); /* Maps to Blue */
+  --color-pastel-pink: var(--color-secondary); /* Maps to Red */
+  --color-pastel-lime: var(--color-quaternary); /* Maps to Amber */
   
   --color-dark-surface: var(--color-dark-surface);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
+      --background: #121212;
+      --foreground: #ffffff;
   }
 }
 
