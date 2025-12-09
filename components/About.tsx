@@ -31,17 +31,17 @@ export default function About() {
           
           <div className="space-y-6 text-lg md:text-xl text-foreground/70 font-light leading-relaxed">
             <p>
-              A software engineer with a passion for innovation and cutting-edge technology.
+              A QA Team Lead with a passion for automation, reliability, and seamless user experiences.
             </p>
             <p>
-              Particularly interested in the intersection of art, design, and software. 
-              I believe that these disciplines can be combined to create truly transformative experiences.
+              Particularly interested in the intersection of development and quality assurance.
+              I believe that robust testing strategies are the backbone of any successful product.
             </p>
-            <p className="text-pastel-purple font-medium">
-              Currently the founding full stack software engineer @Catapult a DeFi startup.
+            <p className="text-pastel-green font-medium">
+              Currently leading the QA efforts @Catapult, ensuring bug-free releases for thousands of users.
             </p>
             <p>
-              My projects have received multiple awards in the past, and I am always looking for new and innovative ways to use my skills to make a positive impact on the world.
+              My team has delivered award-winning quality in the past, and I am always looking for new ways to optimize testing pipelines.
             </p>
           </div>
         </motion.div>

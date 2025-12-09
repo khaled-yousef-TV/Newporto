@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Khaled Yousef | Software Engineer",
-  description: "Portfolio of Khaled Yousef, a software engineer with a passion for innovation and cutting-edge technology.",
+  title: "Khaled Yousef | QA Team Lead",
+  description: "Portfolio of Khaled Yousef, a QA Team Lead passionate about automation, quality assurance, and perfect user experiences.",
 };
 
 export default function RootLayout({

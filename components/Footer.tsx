@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           <p className="text-foreground/60 max-w-sm">
-            AI/LLM enthusiast | Cutting-edge tech advocate | Web3 builder | Passionate about using technology to make the world a better place.
+            QA Automation Expert | Cypress & Playwright Enthusiast | Bug Hunter | Passionate about delivering flawless software.
           </p>
         </div>
 
