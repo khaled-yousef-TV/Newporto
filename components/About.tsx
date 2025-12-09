@@ -42,7 +42,7 @@ export default function About() {
               I believe that robust testing strategies are the backbone of any successful product.
             </p>
             <p className="text-pastel-green font-medium">
-              Currently leading the QA efforts @Catapult, ensuring bug-free releases for thousands of users.
+              Currently working as a QA Lead at Teamviewer, ensuring robust software quality and efficient testing cycles.
             </p>
             <p>
               My team has delivered award-winning quality in the past, and I am always looking for new ways to optimize testing pipelines.

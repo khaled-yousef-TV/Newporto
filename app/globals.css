@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Pastel Palette */
-  --background: #FFFDF5; /* Cream */
-  --foreground: #4A4A4A; /* Dark Grey */
+  /* Dark Tech Palette */
+  --background: #0a0a0a; /* Deep Black */
+  --foreground: #ededed; /* Off-white text */
   
-  --color-primary: #FFB7B2; /* Pastel Pink */
-  --color-secondary: #B5EAD7; /* Pastel Green */
-  --color-tertiary: #C7CEEA; /* Pastel Purple */
-  --color-quaternary: #E2F0CB; /* Pastel Lime */
+  --color-primary: #00ff9d; /* Neon Green (QA Pass) */
+  --color-secondary: #7000ff; /* Electric Purple */
+  --color-tertiary: #00d2ff; /* Cyan */
+  --color-quaternary: #ff0055; /* Neon Red */
+  
+  --color-dark-surface: #171717;
 }
 
 @theme inline {
@@ -17,18 +19,18 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  --color-pastel-pink: var(--color-primary);
-  --color-pastel-green: var(--color-secondary);
-  --color-pastel-purple: var(--color-tertiary);
-  --color-pastel-lime: var(--color-quaternary);
+  --color-pastel-green: var(--color-primary); /* Keeping variable name for compatibility but mapped to neon */
+  --color-pastel-purple: var(--color-secondary);
+  --color-pastel-pink: var(--color-quaternary);
+  --color-pastel-lime: var(--color-tertiary);
+  
+  --color-dark-surface: var(--color-dark-surface);
 }
 
 @media (prefers-color-scheme: dark) {
-  /* Keeping the same pastel theme even in dark mode for this specific request, 
-     or we could invert it. Let's keep the light pastel theme as requested. */
   :root {
-      --background: #FFFDF5;
-      --foreground: #4A4A4A;
+      --background: #0a0a0a;
+      --foreground: #ededed;
   }
 }
 

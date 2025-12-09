@@ -21,10 +21,10 @@ export default function Footer() {
           
           <div>
              <a 
-               href="mailto:khaledyousef@example.com" 
-               className="text-xl md:text-2xl border-b border-foreground/30 pb-1 hover:border-pastel-purple hover:text-pastel-purple transition-colors"
+               href="mailto:kyousefju@gmail.com" 
+               className="text-xl md:text-2xl border-b border-foreground/30 pb-1 hover:border-pastel-green hover:text-pastel-green transition-colors"
              >
-               khaledyousef@example.com
+               kyousefju@gmail.com
              </a>
           </div>
 

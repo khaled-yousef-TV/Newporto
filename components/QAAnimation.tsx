@@ -10,7 +10,7 @@ export default function QAAnimation() {
   useEffect(() => {
     const interval = setInterval(() => {
       setStep((prev) => (prev < 4 ? prev + 1 : 0));
-    }, 2000);
+    }, 1200);
     return () => clearInterval(interval);
   }, []);
 
