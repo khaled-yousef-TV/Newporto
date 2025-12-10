@@ -27,74 +27,40 @@ export default function Header() {
   return (
     <>
       <motion.header 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled 
-            ? "py-4 px-6 md:px-10" 
-            : "py-6 px-6 md:py-10 md:px-10"
-        }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6"
       >
-        <div className={`flex justify-between items-center transition-all duration-500 ${
+        <div className={`flex justify-between items-center max-w-7xl mx-auto transition-all duration-300 ${
           scrolled 
-            ? "bg-background/80 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-lg shadow-black/20" 
+            ? "bg-white/5 backdrop-blur-md rounded-full px-4 py-2 border border-white/5" 
             : ""
         }`}>
           
-          {/* Logo */}
-          <Link href="/" className="group relative">
-            <motion.span 
-              className="text-lg md:text-xl font-bold tracking-tighter uppercase text-foreground"
-              whileHover={{ scale: 1.02 }}
-            >
-              <span className="relative">
-                K
-                <motion.span
-                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-pastel-purple origin-left"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </span>
-              <span className="text-pastel-purple">.</span>
-              Yousef
-            </motion.span>
+          {/* Logo - Simple initials */}
+          <Link href="/" className="group">
+            <span className="text-sm font-medium tracking-wider text-foreground/70 hover:text-foreground transition-colors">
+              KY
+            </span>
           </Link>
           
-          {/* Menu Button */}
+          {/* Menu Button - Minimal */}
           <button 
             onClick={toggleMenu} 
-            className="relative flex items-center gap-3 group"
+            className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors"
           >
-            <span className="text-sm uppercase tracking-widest font-medium group-hover:text-pastel-purple transition-colors">
-              {isOpen ? "Close" : "Menu"}
-            </span>
-            
-            {/* Hamburger Icon */}
-            <div className="relative w-6 h-4 flex flex-col justify-between">
+            <div className="flex gap-1">
               <motion.span 
-                animate={{ 
-                  rotate: isOpen ? 45 : 0, 
-                  y: isOpen ? 6 : 0,
-                  backgroundColor: isOpen ? "var(--color-primary)" : "currentColor"
-                }}
-                className="w-full h-0.5 bg-current origin-left transition-colors"
+                animate={{ opacity: isOpen ? 0 : 1 }}
+                className="w-1 h-1 rounded-full bg-current"
               />
               <motion.span 
-                animate={{ 
-                  opacity: isOpen ? 0 : 1,
-                  scaleX: isOpen ? 0 : 1
-                }}
-                className="w-full h-0.5 bg-current"
+                className="w-1 h-1 rounded-full bg-current"
               />
               <motion.span 
-                animate={{ 
-                  rotate: isOpen ? -45 : 0, 
-                  y: isOpen ? -6 : 0,
-                  backgroundColor: isOpen ? "var(--color-primary)" : "currentColor"
-                }}
-                className="w-full h-0.5 bg-current origin-left transition-colors"
+                animate={{ opacity: isOpen ? 0 : 1 }}
+                className="w-1 h-1 rounded-full bg-current"
               />
             </div>
           </button>
@@ -104,69 +70,74 @@ export default function Header() {
       {/* Full Screen Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ clipPath: "circle(0% at calc(100% - 60px) 40px)" }}
-            animate={{ clipPath: "circle(150% at calc(100% - 60px) 40px)" }}
-            exit={{ clipPath: "circle(0% at calc(100% - 60px) 40px)" }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 bg-gradient-to-br from-background via-background to-pastel-purple/20"
-          >
-            {/* Background Grid */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
-                                  linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
-              }} />
-            </div>
-
-            <nav className="h-full flex flex-col justify-center items-center gap-2">
-              {menuItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
-                  className="overflow-hidden"
-                >
-                  <Link 
-                    href={item.href} 
-                    onClick={toggleMenu}
-                    className="group relative block py-2"
-                  >
-                    <span className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-foreground group-hover:text-pastel-purple transition-colors duration-300">
-                      {item.name}
-                    </span>
-                    
-                    {/* Hover underline */}
-                    <motion.span 
-                      className="absolute bottom-0 left-0 w-full h-1 bg-pastel-purple origin-left"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-            
-            {/* Bottom Info */}
-            <motion.div 
+          <>
+            {/* Backdrop */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-10 left-0 right-0 flex justify-between items-center px-10 text-sm"
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={toggleMenu}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            />
+            
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-sm bg-background border-l border-white/10"
             >
-              <div className="flex gap-6 text-foreground/50">
-                <a href="https://github.com/khaled-yousef-TV" target="_blank" className="hover:text-pastel-purple transition-colors">GitHub</a>
-                <a href="https://www.linkedin.com/in/khaled-yousef-b7281510b/" target="_blank" className="hover:text-pastel-purple transition-colors">LinkedIn</a>
-              </div>
-              <div className="text-foreground/50">
-                Vienna (CET)
-              </div>
+              {/* Close Button */}
+              <button 
+                onClick={toggleMenu}
+                className="absolute top-6 right-6 text-foreground/50 hover:text-foreground transition-colors"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+
+              <nav className="h-full flex flex-col justify-center px-10">
+                <div className="space-y-1">
+                  {menuItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 10 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
+                    >
+                      <Link 
+                        href={item.href} 
+                        onClick={toggleMenu}
+                        className="block py-3 text-3xl font-light text-foreground/70 hover:text-foreground hover:pl-2 transition-all"
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                {/* Bottom Info */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-16 pt-8 border-t border-white/10 space-y-4"
+                >
+                  <div className="flex gap-4 text-sm text-foreground/40">
+                    <a href="https://github.com/khaled-yousef-TV" target="_blank" className="hover:text-foreground transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/khaled-yousef-b7281510b/" target="_blank" className="hover:text-foreground transition-colors">LinkedIn</a>
+                  </div>
+                  <p className="text-xs text-foreground/30">
+                    kyousefju@gmail.com
+                  </p>
+                </motion.div>
+              </nav>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
