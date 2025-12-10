@@ -15,7 +15,7 @@ export default function About() {
     { icon: Terminal, label: "QA Automation", description: "Selenium, Ranorex" },
     { icon: Brain, label: "AI & LLMs", description: "GPT, LangChain" },
     { icon: Code, label: "Test Frameworks", description: "Java, Python" },
-    { icon: Cpu, label: "CI/CD", description: "GitHub Actions" },
+    { icon: Cpu, label: "CI/CD", description: "GitLab" },
   ];
 
   return (

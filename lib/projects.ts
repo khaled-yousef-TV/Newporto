@@ -52,7 +52,7 @@ export const projectsData = [
     description: "Enterprise-grade CI/CD pipeline with automated test execution, parallel runs, and real-time Slack/Teams notifications.",
     gradient: "bg-gradient-to-br from-amber-600 via-orange-700 to-red-800",
     iconName: "Workflow",
-    tech: ["GitHub Actions", "Docker", "Selenium Grid", "Allure", "Slack API"],
+    tech: ["GitLab CI", "Docker", "Selenium Grid", "Allure", "Slack API"],
     features: [
       "Parallel test execution across browsers",
       "Automatic retry for flaky tests",
