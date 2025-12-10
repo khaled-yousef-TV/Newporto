@@ -41,7 +41,7 @@ export default function HeroText() {
 
   return (
     <div className="relative flex flex-col items-center">
-      <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center">
+      <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center overflow-hidden">
         
         {/* QUALITY */}
         <div className="flex">
@@ -62,7 +62,7 @@ export default function HeroText() {
         </div>
 
         {/* IS MY CRAFT - brightness tied to progress + flicker when complete */}
-        <motion.span 
+        <motion.div 
           animate={{ 
             opacity: allPassed 
               ? [1, 0.7, 1, 0.85, 1]
@@ -73,10 +73,10 @@ export default function HeroText() {
             ? { duration: 0.3, times: [0, 0.2, 0.4, 0.7, 1] }
             : { duration: 0.3 }
           }
-          className="font-light italic text-pastel-purple"
+          className="font-light italic text-pastel-purple pr-4"
         >
           is my craft
-        </motion.span>
+        </motion.div>
       </h1>
 
       {/* 7 Test Steps - synced with letters */}
