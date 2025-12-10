@@ -28,7 +28,7 @@ export default function About() {
   const skills = [
     { icon: Terminal, label: "QA Automation", color: "text-pastel-green" },
     { icon: Brain, label: "AI & LLMs", color: "text-pastel-purple" },
-    { icon: Code, label: "Cypress / Playwright", color: "text-pastel-pink" },
+    { icon: Code, label: "Selenium / Ranorex", color: "text-pastel-pink" },
     { icon: Cpu, label: "JKU Student", color: "text-pastel-lime" },
   ];
 

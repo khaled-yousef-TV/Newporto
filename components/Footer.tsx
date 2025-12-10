@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           <p className="text-foreground/60 max-w-sm">
-            QA Automation Expert | AI Student at JKU | LLM Enthusiast | Passionate about delivering flawless software.
+            QA Automation Expert | AI Student at JKU | LLM Enthusiast | Selenium & Ranorex Pro.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
               </div>
               <div>
                 <h4 className="text-foreground mb-2">Timezone</h4>
-                <p>5:2 UK (GMT+1)</p>
+                <p>Vienna (CET/CEST)</p>
               </div>
            </div>
         </div>
