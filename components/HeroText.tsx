@@ -10,6 +10,9 @@ export default function HeroText() {
   
   const letters = "QUALITY".split("");
 
+  // Calculate "is my craft" opacity based on progress (0.05 to 1)
+  const craftOpacity = Math.max(0.05, (currentTest + 1) / letters.length);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
@@ -66,19 +69,17 @@ export default function HeroText() {
           ))}
         </div>
 
-        {/* IS MY CRAFT - hidden until all tests pass, smooth fade in */}
-        <AnimatePresence>
-          {allPassed && (
-            <motion.span 
-              initial={{ opacity: 0, filter: "blur(10px)", scale: 0.95 }}
-              animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="font-light italic text-pastel-purple"
-            >
-              is my craft
-            </motion.span>
-          )}
-        </AnimatePresence>
+        {/* IS MY CRAFT - always visible, brightness tied to QUALITY progress */}
+        <motion.span 
+          animate={{ 
+            opacity: craftOpacity,
+            filter: allPassed ? "blur(0px)" : `blur(${Math.max(0, 3 - (currentTest + 1) * 0.5)}px)`
+          }}
+          transition={{ duration: 0.3 }}
+          className="font-light italic text-pastel-purple"
+        >
+          is my craft
+        </motion.span>
       </h1>
 
       {/* Success indicator */}
