@@ -97,7 +97,7 @@ export default function About() {
             </motion.p>
 
             <motion.p variants={itemVariants}>
-               Currently diving deep into <strong>Large Language Models</strong> while ensuring award-winning quality for enterprise software.
+               Currently diving deep into <strong>Large Language Models</strong> while ensuring top-notch quality for enterprise software.
             </motion.p>
           </div>
 
