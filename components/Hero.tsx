@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import QAAnimation from "./QAAnimation";
+import HeroText from "./HeroText";
 
 export default function Hero() {
   const textVariants: Variants = {
@@ -22,25 +23,9 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pastel-purple/20 via-background to-background" />
       
       <div className="flex flex-col items-center text-center space-y-4 md:space-y-8 z-10">
-        <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center">
-          <motion.span
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-          >
-            Quality
-          </motion.span>
-          <motion.span 
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="font-light italic text-pastel-purple"
-          >
-            is my craft
-          </motion.span>
-        </h1>
+        
+        {/* New Animated Hero Text */}
+        <HeroText />
 
         <motion.p 
           custom={2}
