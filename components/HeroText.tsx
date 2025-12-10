@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Bug } from "lucide-react";
+import { Check, Bug, Crosshair } from "lucide-react";
 
 export default function HeroText() {
   const [currentTest, setCurrentTest] = useState(-1);
   const [allPassed, setAllPassed] = useState(false);
-  const [bugVisible, setBugVisible] = useState(false);
-  const [bugFalling, setBugFalling] = useState(false);
+  const [bugShot, setBugShot] = useState(false);
   
   const letters = "QUALITY".split("");
   const testNames = [
@@ -30,19 +29,14 @@ export default function HeroText() {
         setCurrentTest(prev => {
           if (prev >= letters.length - 1) {
             clearInterval(interval);
-            setTimeout(() => {
-              setAllPassed(true);
-              setBugVisible(true);
-              // Bug crawls for 1.2s, then falls
-              setTimeout(() => setBugFalling(true), 1200);
-              // Hide bug after falling animation
-              setTimeout(() => setBugVisible(false), 1800);
-            }, 500);
+            // Bug gets shot on Y
+            setTimeout(() => setBugShot(true), 300);
+            setTimeout(() => setAllPassed(true), 800);
             return prev;
           }
           return prev + 1;
         });
-      }, 300);
+      }, 400);
       return () => clearInterval(interval);
     }, 600);
     return () => clearTimeout(timer);
@@ -50,23 +44,94 @@ export default function HeroText() {
 
   return (
     <div className="relative flex flex-col items-center">
-      <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center overflow-hidden">
+      <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center overflow-visible">
         
         {/* QUALITY */}
-        <div className="flex">
+        <div className="flex relative">
           {letters.map((letter, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0.15 }}
-              animate={{ 
-                opacity: currentTest >= index ? 1 : 0.15,
-                color: currentTest >= index ? "var(--color-primary)" : "currentColor"
-              }}
-              transition={{ duration: 0.2 }}
-              className="inline-block"
-            >
-              {letter}
-            </motion.span>
+            <div key={index} className="relative">
+              <motion.span
+                initial={{ opacity: 0.15 }}
+                animate={{ 
+                  opacity: currentTest >= index ? 1 : 0.15,
+                  color: currentTest >= index ? "var(--color-primary)" : "currentColor"
+                }}
+                transition={{ duration: 0.2 }}
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+              
+              {/* Bug appears above each letter as it lights up */}
+              <AnimatePresence>
+                {currentTest === index && !bugShot && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.5 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0, 
+                      scale: 1,
+                      rotate: [0, -10, 10, -5, 5, 0]
+                    }}
+                    exit={{ opacity: 0, scale: 0.5, y: -10 }}
+                    transition={{ 
+                      duration: 0.3,
+                      rotate: { duration: 0.4, ease: "easeInOut" }
+                    }}
+                    className="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 text-red-500"
+                  >
+                    <Bug size={20} className="md:w-7 md:h-7" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
+              {/* Crosshair and shot effect on Y (last letter) */}
+              <AnimatePresence>
+                {index === letters.length - 1 && currentTest === index && !bugShot && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 2 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2, duration: 0.15 }}
+                    className="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 text-pastel-green"
+                  >
+                    <Crosshair size={28} className="md:w-10 md:h-10" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
+              {/* Bug explosion on Y */}
+              <AnimatePresence>
+                {index === letters.length - 1 && bugShot && !allPassed && (
+                  <motion.div
+                    initial={{ opacity: 1, scale: 1 }}
+                    animate={{ 
+                      opacity: 0,
+                      scale: [1, 1.5, 2],
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2"
+                  >
+                    <div className="relative">
+                      {/* Explosion particles */}
+                      {[...Array(6)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ x: 0, y: 0, opacity: 1 }}
+                          animate={{ 
+                            x: Math.cos(i * 60 * Math.PI / 180) * 30,
+                            y: Math.sin(i * 60 * Math.PI / 180) * 30,
+                            opacity: 0
+                          }}
+                          transition={{ duration: 0.4 }}
+                          className="absolute w-2 h-2 bg-red-500 rounded-full"
+                          style={{ left: '50%', top: '50%' }}
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </div>
 
@@ -87,37 +152,6 @@ export default function HeroText() {
           >
             is my craft
           </motion.div>
-          
-          {/* Bug crawling through during flicker, then falling off */}
-          <AnimatePresence>
-            {bugVisible && (
-              <motion.div
-                initial={{ left: "-5%", opacity: 0, rotate: 0, y: 0 }}
-                animate={bugFalling ? {
-                  y: [0, 20, 80, 200],
-                  rotate: [0, 45, 120, 200],
-                  opacity: [1, 1, 0.5, 0],
-                  left: "105%"
-                } : { 
-                  left: ["0%", "35%", "70%", "105%"],
-                  opacity: [0, 1, 1, 1],
-                  rotate: [0, 8, -8, 0],
-                  y: [0, -3, 3, 0]
-                }}
-                transition={bugFalling ? {
-                  duration: 0.5,
-                  ease: "easeIn"
-                } : { 
-                  duration: 1.2,
-                  times: [0, 0.3, 0.6, 1],
-                  ease: "linear"
-                }}
-                className="absolute top-1/2 -translate-y-1/2 text-red-500"
-              >
-                <Bug size={18} className="md:w-5 md:h-5" />
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </h1>
 
