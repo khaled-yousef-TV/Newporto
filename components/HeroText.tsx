@@ -65,12 +65,12 @@ export default function HeroText() {
         <motion.div 
           animate={{ 
             opacity: allPassed 
-              ? [1, 0.7, 1, 0.85, 1]
+              ? [1, 0.6, 1, 1, 0.7, 1, 1, 1, 0.8, 1]
               : craftOpacity,
             filter: allPassed ? "blur(0px)" : `blur(${Math.max(0, 2 - (currentTest + 1) * 0.3)}px)`
           }}
           transition={allPassed 
-            ? { duration: 0.3, times: [0, 0.2, 0.4, 0.7, 1] }
+            ? { duration: 1.5, times: [0, 0.05, 0.1, 0.3, 0.35, 0.4, 0.6, 0.8, 0.85, 1], ease: "linear" }
             : { duration: 0.3 }
           }
           className="font-light italic text-pastel-purple pr-4"
