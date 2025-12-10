@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Terminal } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function HeroText() {
   const [currentTest, setCurrentTest] = useState(-1);
@@ -32,23 +31,6 @@ export default function HeroText() {
 
   return (
     <div className="relative flex flex-col items-center">
-      
-      {/* Terminal header */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: allPassed ? 0 : 1 }}
-        className="flex items-center gap-2 text-xs font-mono text-foreground/40 mb-4 h-6"
-      >
-        <Terminal size={14} />
-        <span>running tests...</span>
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ repeat: Infinity, duration: 0.8 }}
-        >
-          █
-        </motion.span>
-      </motion.div>
-
       <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center">
         
         {/* QUALITY */}
@@ -69,33 +51,23 @@ export default function HeroText() {
           ))}
         </div>
 
-        {/* IS MY CRAFT - always visible, brightness tied to QUALITY progress */}
+        {/* IS MY CRAFT - brightness tied to progress + flicker when complete */}
         <motion.span 
           animate={{ 
-            opacity: craftOpacity,
-            filter: allPassed ? "blur(0px)" : `blur(${Math.max(0, 3 - (currentTest + 1) * 0.5)}px)`
+            opacity: allPassed 
+              ? [1, 0.7, 1, 0.85, 1] // Flicker effect
+              : craftOpacity,
+            filter: allPassed ? "blur(0px)" : `blur(${Math.max(0, 2 - (currentTest + 1) * 0.3)}px)`
           }}
-          transition={{ duration: 0.3 }}
+          transition={allPassed 
+            ? { duration: 0.3, times: [0, 0.2, 0.4, 0.7, 1] }
+            : { duration: 0.3 }
+          }
           className="font-light italic text-pastel-purple"
         >
           is my craft
         </motion.span>
       </h1>
-
-      {/* Success indicator */}
-      <AnimatePresence>
-        {allPassed && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-4 flex items-center gap-2"
-          >
-            <div className="w-2 h-2 rounded-full bg-pastel-green animate-pulse" />
-            <span className="text-pastel-green text-xs font-mono">all systems go</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

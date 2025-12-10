@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import HeroText from "./HeroText";
+import QAAnimation from "./QAAnimation";
 
 export default function Hero() {
   return (
@@ -12,14 +13,13 @@ export default function Hero() {
         
         <HeroText />
 
-        {/* Tagline - appears after QUALITY animation completes (~3.5s) */}
+        {/* Tagline */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3.8, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative"
         >
-          {/* Decorative line */}
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -31,7 +31,6 @@ export default function Hero() {
             Ensuring perfection in every release
           </p>
           
-          {/* Decorative line */}
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -40,11 +39,20 @@ export default function Hero() {
           />
         </motion.div>
 
+        {/* QA Animation with checkmarks */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 4.5, duration: 0.8 }}
+        >
+          <QAAnimation />
+        </motion.div>
+
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 5 }}
+          transition={{ delay: 5.5 }}
           className="absolute bottom-10"
         >
           <motion.div
