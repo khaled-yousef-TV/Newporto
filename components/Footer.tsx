@@ -35,9 +35,8 @@ export default function Footer() {
 
         <div className="md:w-1/2 flex flex-col justify-between space-y-10">
            <div className="flex gap-6">
-              <Link href="#" className="hover:text-pastel-purple transition-colors"><Twitter /></Link>
-              <Link href="#" className="hover:text-pastel-purple transition-colors"><Github /></Link>
-              <Link href="#" className="hover:text-pastel-purple transition-colors"><Linkedin /></Link>
+              <Link href="https://github.com/khaled-yousef-TV" target="_blank" className="hover:text-pastel-purple transition-colors"><Github /></Link>
+              <Link href="https://www.linkedin.com/in/khaled-yousef-b7281510b/" target="_blank" className="hover:text-pastel-purple transition-colors"><Linkedin /></Link>
            </div>
 
            <div className="grid grid-cols-2 gap-8 text-sm text-foreground/60 uppercase tracking-wider">
