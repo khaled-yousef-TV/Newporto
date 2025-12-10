@@ -66,13 +66,13 @@ export default function HeroText() {
           ))}
         </div>
 
-        {/* IS MY CRAFT - hidden until all tests pass */}
+        {/* IS MY CRAFT - hidden until all tests pass, smooth fade in */}
         <AnimatePresence>
           {allPassed && (
             <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0, filter: "blur(10px)", scale: 0.95 }}
+              animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="font-light italic text-pastel-purple"
             >
               is my craft
