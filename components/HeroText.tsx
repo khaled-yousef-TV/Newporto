@@ -10,13 +10,13 @@ export default function HeroText() {
   
   const letters = "QUALITY".split("");
   const testNames = [
-    "unit_test",
-    "ui_check", 
-    "api_test",
-    "load_test",
+    "linting",
+    "type_check", 
+    "unit_tests",
     "integration",
-    "type_check",
-    "yaml_lint"
+    "api",
+    "ui",
+    "load_test"
   ];
 
   // Calculate "is my craft" opacity based on progress (0.05 to 1)

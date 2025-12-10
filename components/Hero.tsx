@@ -5,8 +5,9 @@ import HeroText from "./HeroText";
 
 export default function Hero() {
   return (
-    <section className="h-screen flex flex-col justify-center items-center px-6 md:px-10 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pastel-purple/10 via-background to-background" />
+    <section className="h-screen w-full flex flex-col justify-center items-center px-6 md:px-10 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 -z-10 bg-background" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,_var(--tw-gradient-stops))] from-pastel-purple/10 via-transparent to-transparent" />
       
       <div className="flex flex-col items-center text-center space-y-6 md:space-y-10 z-10">
         
