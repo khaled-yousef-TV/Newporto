@@ -12,18 +12,18 @@ export default function Hero() {
         
         <HeroText />
 
-        {/* Tagline with elegant styling */}
+        {/* Tagline with elegant styling - appears after "is my craft" (600ms + 7*300ms + 500ms + 600ms buffer = ~4.2s) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3, duration: 0.8 }}
+          transition={{ delay: 4.2, duration: 0.8 }}
           className="relative"
         >
           {/* Decorative line */}
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ delay: 3.2, duration: 0.6 }}
+            transition={{ delay: 4.4, duration: 0.6 }}
             className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-pastel-purple/50 to-transparent"
           />
           
@@ -35,7 +35,7 @@ export default function Hero() {
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ delay: 3.4, duration: 0.6 }}
+            transition={{ delay: 4.6, duration: 0.6 }}
             className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-pastel-purple/50 to-transparent"
           />
         </motion.div>
@@ -44,7 +44,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 4 }}
+          transition={{ delay: 5.2 }}
           className="absolute bottom-10"
         >
           <motion.div
