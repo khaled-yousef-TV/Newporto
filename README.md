@@ -1,4 +1,5 @@
-# Portfolio Website
+Both khaledyousef.io and its alternate name are improperly configured
+Domain's DNS record could not be retrieved. For more information, see documentation (InvalidDNSError).# Portfolio Website
 
 This is a portfolio website template built with Next.js, Tailwind CSS, and Framer Motion, designed to look like [Bettina Sosa's portfolio](https://www.bettinasosa.com).
 
