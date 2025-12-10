@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import HeroText from "./HeroText";
-import QAAnimation from "./QAAnimation";
 
 export default function Hero() {
   return (
@@ -17,13 +16,13 @@ export default function Hero() {
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.8, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ delay: 4.5, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative"
         >
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ delay: 4, duration: 0.8 }}
+            transition={{ delay: 4.7, duration: 0.8 }}
             className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-pastel-purple/50 to-transparent"
           />
           
@@ -34,18 +33,9 @@ export default function Hero() {
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ delay: 4.2, duration: 0.8 }}
+            transition={{ delay: 4.9, duration: 0.8 }}
             className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-pastel-purple/50 to-transparent"
           />
-        </motion.div>
-
-        {/* QA Animation with checkmarks */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 4.5, duration: 0.8 }}
-        >
-          <QAAnimation />
         </motion.div>
 
         {/* Scroll indicator */}

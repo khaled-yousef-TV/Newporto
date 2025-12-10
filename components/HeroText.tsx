@@ -2,12 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 export default function HeroText() {
   const [currentTest, setCurrentTest] = useState(-1);
   const [allPassed, setAllPassed] = useState(false);
   
   const letters = "QUALITY".split("");
+  const testNames = [
+    "unit_test",
+    "ui_check", 
+    "api_test",
+    "load_test",
+    "integration",
+    "type_check",
+    "yaml_lint"
+  ];
 
   // Calculate "is my craft" opacity based on progress (0.05 to 1)
   const craftOpacity = Math.max(0.05, (currentTest + 1) / letters.length);
@@ -55,7 +65,7 @@ export default function HeroText() {
         <motion.span 
           animate={{ 
             opacity: allPassed 
-              ? [1, 0.7, 1, 0.85, 1] // Flicker effect
+              ? [1, 0.7, 1, 0.85, 1]
               : craftOpacity,
             filter: allPassed ? "blur(0px)" : `blur(${Math.max(0, 2 - (currentTest + 1) * 0.3)}px)`
           }}
@@ -68,6 +78,45 @@ export default function HeroText() {
           is my craft
         </motion.span>
       </h1>
+
+      {/* 7 Test Steps - synced with letters */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="mt-10 font-mono text-xs space-y-1"
+      >
+        {testNames.map((name, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ 
+              opacity: currentTest >= index ? 1 : 0.2,
+              x: currentTest >= index ? 0 : -10
+            }}
+            transition={{ duration: 0.2 }}
+            className={`flex items-center gap-3 ${currentTest >= index ? 'text-pastel-green' : 'text-foreground/20'}`}
+          >
+            <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+              currentTest >= index 
+                ? 'border-pastel-green bg-pastel-green/20' 
+                : 'border-foreground/20'
+            }`}>
+              {currentTest >= index && <Check size={10} strokeWidth={3} />}
+            </div>
+            <span className="text-foreground/50 w-24">{name}</span>
+            {currentTest >= index && (
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-pastel-green text-[10px] font-bold"
+              >
+                PASS
+              </motion.span>
+            )}
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 }
