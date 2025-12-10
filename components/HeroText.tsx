@@ -13,10 +13,10 @@ export default function HeroText() {
     "linting",
     "type_check", 
     "unit_tests",
-    "integration",
-    "api",
-    "ui",
-    "load_test"
+    "integration_tests",
+    "api_tests",
+    "ui_tests",
+    "load_tests"
   ];
 
   // Calculate "is my craft" opacity based on progress (0.05 to 1)
@@ -104,7 +104,7 @@ export default function HeroText() {
             }`}>
               {currentTest >= index && <Check size={10} strokeWidth={3} />}
             </div>
-            <span className="text-foreground/50 w-24">{name}</span>
+            <span className="text-foreground/50 w-32">{name}</span>
             {currentTest >= index && (
               <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
