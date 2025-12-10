@@ -89,7 +89,7 @@ export default function About() {
           
           <div className="space-y-6 text-lg text-foreground/80 font-light leading-relaxed">
             <motion.p variants={itemVariants} className="border-l-2 border-pastel-green pl-4">
-              <span className="text-white font-medium">QA Lead @ Teamviewer</span> by day, <span className="text-pastel-purple font-medium">AI Student @ JKU</span> by night.
+              <span className="text-white font-medium">QA Lead @ Teamviewer</span> by day, <span className="text-pastel-purple font-medium">AI Student @ JKU</span> at other parts of the day.
             </motion.p>
             
             <motion.p variants={itemVariants}>
