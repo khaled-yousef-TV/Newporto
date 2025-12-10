@@ -1,117 +1,178 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { Code, Terminal, Brain, Cpu } from "lucide-react";
+import { Code, Terminal, Brain, Cpu, Zap, ArrowRight } from "lucide-react";
 
 export default function About() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const stats = [
+    { value: "5+", label: "Years QA" },
+    { value: "∞", label: "Bugs Caught" },
+    { value: "AI", label: "@ JKU" },
+  ];
 
   const skills = [
-    { icon: Terminal, label: "QA Automation", color: "text-pastel-green" },
-    { icon: Brain, label: "AI & LLMs", color: "text-pastel-purple" },
-    { icon: Code, label: "Selenium / Ranorex", color: "text-pastel-pink" },
-    { icon: Cpu, label: "JKU Student", color: "text-pastel-lime" },
+    { icon: Terminal, label: "QA Automation", description: "Selenium, Ranorex" },
+    { icon: Brain, label: "AI & LLMs", description: "GPT, LangChain" },
+    { icon: Code, label: "Test Frameworks", description: "Java, Python" },
+    { icon: Cpu, label: "CI/CD", description: "GitHub Actions" },
   ];
 
   return (
-    <section id="about" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
-        {/* Image Section with "Glitch" or "Tech" Border Effect */}
+    <section id="about" className="py-32 px-6 md:px-10 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-pastel-purple/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-pastel-green/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative group"
+          className="mb-20"
         >
-           <div className="absolute -inset-1 bg-gradient-to-r from-pastel-green to-pastel-purple rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-           <div className="aspect-[3/4] bg-dark-surface rounded-lg overflow-hidden relative border border-white/10">
-             {/* Using standard img tag as fallback if Next.js Image fails, but keeping Next.js Image for optimization */}
-             <div className="relative w-full h-full">
-               <Image 
-                 src="/Newporto/profile.jpg" // Try with base path if on GitHub Pages project site
-                 alt="Khaled Yousef"
-                 fill
-                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                 onError={(e) => {
-                   // Fallback for local dev or if path is different
-                   const target = e.target as HTMLImageElement;
-                   if (target.src.indexOf('Newporto') > -1) {
-                      target.src = "/profile.jpg";
-                   }
-                 }}
-                 priority
-               />
-             </div>
-             
-             {/* Overlay Gradient */}
-             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60"></div>
-             
-             <div className="absolute bottom-4 left-4 right-4">
-                <div className="flex gap-2 text-xs uppercase tracking-widest text-pastel-green font-bold">
-                  <span>● Available for work</span>
-                </div>
-             </div>
-           </div>
+          <span className="text-pastel-purple text-sm uppercase tracking-widest">Get to know me</span>
+          <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter mt-2">
+            About
+          </h2>
         </motion.div>
 
-        {/* Text Section - Animated & Styled */}
-        <motion.div
-           variants={containerVariants}
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true }}
-           className="space-y-8"
-        >
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-foreground">
-            About <span className="text-pastel-green">Me</span>
-          </motion.h2>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           
-          <div className="space-y-6 text-lg text-foreground/80 font-light leading-relaxed">
-            <motion.p variants={itemVariants} className="border-l-2 border-pastel-green pl-4">
-              <span className="text-white font-medium">QA Lead @ Teamviewer</span> by day, <span className="text-pastel-purple font-medium">AI Student @ JKU</span> at other parts of the day.
-            </motion.p>
-            
-            <motion.p variants={itemVariants}>
-              I bridge the gap between <strong>software quality</strong> and <strong>artificial intelligence</strong>. My obsession? Building systems that are not just bug-free, but intelligent.
-            </motion.p>
+          {/* Left Column - Image & Stats */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5"
+          >
+            {/* Image Container */}
+            <div className="relative group mb-8">
+              {/* Decorative Frame */}
+              <div className="absolute -inset-4 border border-white/10 rounded-2xl -z-10" />
+              <div className="absolute -inset-8 border border-white/5 rounded-3xl -z-20" />
+              
+              {/* Floating Badge */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 z-20 bg-pastel-green text-black text-xs font-bold px-3 py-1.5 rounded-full"
+              >
+                <span className="flex items-center gap-1">
+                  <Zap size={12} /> Available
+                </span>
+              </motion.div>
 
-            <motion.p variants={itemVariants}>
-               Currently diving deep into <strong>Large Language Models</strong> while ensuring top-notch quality for enterprise software.
-            </motion.p>
-          </div>
-
-          {/* Tech Stack Grid */}
-          <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 pt-4">
-            {skills.map((skill) => (
-              <div key={skill.label} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
-                <skill.icon size={20} className={skill.color} />
-                <span className="text-sm uppercase tracking-wider font-medium">{skill.label}</span>
+              {/* Main Image */}
+              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10">
+                <Image 
+                  src="/profile.jpg"
+                  alt="Khaled Yousef"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
               </div>
-            ))}
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                  className="text-center p-4 bg-white/5 rounded-xl border border-white/5"
+                >
+                  <div className="text-2xl md:text-3xl font-bold text-pastel-purple">{stat.value}</div>
+                  <div className="text-xs uppercase tracking-wider text-foreground/50 mt-1">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
-        </motion.div>
+          {/* Right Column - Text & Skills */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
+            {/* Bio Text */}
+            <div className="space-y-6 mb-12">
+              <p className="text-2xl md:text-3xl font-light leading-relaxed text-foreground/90">
+                <span className="text-pastel-green font-medium">QA Lead</span> at TeamViewer by day,{" "}
+                <span className="text-pastel-purple font-medium">AI Student</span> at JKU at other parts of the day.
+              </p>
+              
+              <p className="text-lg text-foreground/60 leading-relaxed">
+                I bridge the gap between software quality and artificial intelligence. 
+                My obsession? Building systems that are not just bug-free, but intelligent.
+                Currently diving deep into Large Language Models while ensuring 
+                top-notch quality for enterprise software.
+              </p>
+
+              {/* Highlighted Quote */}
+              <div className="relative pl-6 border-l-2 border-pastel-purple/50">
+                <p className="text-foreground/70 italic">
+                  "The best bug is the one that never reaches production."
+                </p>
+              </div>
+            </div>
+
+            {/* Skills Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  className="group p-4 bg-white/5 rounded-xl border border-white/5 hover:border-pastel-purple/30 hover:bg-white/10 transition-all cursor-default"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-pastel-purple/20 rounded-lg group-hover:bg-pastel-purple/30 transition-colors">
+                      <skill.icon size={20} className="text-pastel-purple" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-foreground">{skill.label}</h4>
+                      <p className="text-sm text-foreground/50">{skill.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="mt-10"
+            >
+              <a 
+                href="#contact" 
+                className="inline-flex items-center gap-2 text-pastel-purple hover:gap-4 transition-all group"
+              >
+                <span className="text-sm uppercase tracking-widest font-medium">Let's work together</span>
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
