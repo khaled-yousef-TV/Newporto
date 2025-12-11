@@ -22,7 +22,8 @@ export const projectsData = [
     description: "Leverage Large Language Models to automatically generate comprehensive test cases from user stories and requirements.",
     gradient: "bg-gradient-to-br from-violet-600 via-purple-700 to-indigo-800",
     iconName: "Sparkles",
-    tech: ["Python", "GPT-4", "LangChain", "Pytest", "Allure"],
+    tech: ["Python", "Gemini", "LangChain", "Pytest", "Allure"],
+    github: "https://github.com/khaled-yousef-TV/ai-test-generator",
     features: [
       "Auto-generate test cases from Jira tickets",
       "Smart edge case detection",
