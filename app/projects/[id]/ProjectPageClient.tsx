@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Github } from "lucide-react";
+import { ArrowLeft, Github, Globe } from "lucide-react";
 import { ProjectCard } from "@/components/ProjectCard";
 
 interface Project {
@@ -14,6 +14,7 @@ interface Project {
   iconName: string;
   tech: string[];
   github?: string;
+  live?: string;
   features: string[];
 }
 
@@ -113,8 +114,18 @@ export default function ProjectPageClient({ project }: Props) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="flex gap-4"
+          className="flex gap-4 flex-wrap"
         >
+          {project.live && (
+            <Link
+              href={project.live}
+              target="_blank"
+              className="flex items-center gap-2 px-6 py-3 bg-pastel-purple text-black rounded-full font-medium hover:bg-pastel-purple/90 transition-colors"
+            >
+              <Globe size={20} />
+              Live Site
+            </Link>
+          )}
           {project.github && (
             <Link 
               href={project.github}

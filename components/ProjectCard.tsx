@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bug, Workflow, TestTube, Sparkles, LucideIcon } from "lucide-react";
+import { Bug, Workflow, TestTube, Sparkles, TrendingUp, LucideIcon } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -14,6 +14,7 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
   Bug,
   Workflow,
+  TrendingUp,
 };
 
 export function ProjectCard({ title, iconName, gradient }: ProjectCardProps) {

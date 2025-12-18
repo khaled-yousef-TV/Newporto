@@ -47,18 +47,20 @@ export const projectsData = [
     ]
   },
   {
-    id: "cicd-test-pipeline",
-    title: "CI/CD Test Pipeline",
-    category: "DevOps & Automation",
-    description: "Enterprise-grade CI/CD pipeline with automated test execution, parallel runs, and real-time Slack/Teams notifications.",
-    gradient: "bg-gradient-to-br from-amber-600 via-orange-700 to-red-800",
-    iconName: "Workflow",
-    tech: ["GitLab CI", "Docker", "Selenium Grid", "Allure", "Slack API"],
+    id: "fpl-ai-suggester",
+    title: "FPL AI Squad Suggester",
+    category: "AI Decision Support",
+    description: "A fast FPL dashboard that suggests next-GW squads and transfer options with clear reasons, rule checks, rotation risk, and trend-reversal signals.",
+    gradient: "bg-gradient-to-br from-emerald-700 via-slate-800 to-indigo-900",
+    iconName: "TrendingUp",
+    tech: ["Python", "FastAPI", "React", "Vite", "Pydantic", "FPL API"],
+    github: "https://github.com/khaled-yousef-TV/AIFPL",
+    live: "https://fplai.nl",
     features: [
-      "Parallel test execution across browsers",
-      "Automatic retry for flaky tests",
-      "Real-time notifications",
-      "Detailed HTML reports"
+      "Suggested Squad (4 methods + combined average)",
+      "My Transfers: hold/skip, rule checks (max 3 per club), teammate comparisons",
+      "European rotation risk badges (UCL/UEL/UECL)",
+      "Saved squads + editable selling prices"
     ]
   }
 ];
