@@ -120,6 +120,7 @@ export default function ProjectPageClient({ project }: Props) {
             <Link
               href={project.live}
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-pastel-purple text-black rounded-full font-medium hover:bg-pastel-purple/90 transition-colors"
             >
               <Globe size={20} />
@@ -130,6 +131,7 @@ export default function ProjectPageClient({ project }: Props) {
             <Link 
               href={project.github}
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-colors"
             >
               <Github size={20} />

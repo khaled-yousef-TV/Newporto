@@ -21,6 +21,23 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Khaled Yousef | QA Team Lead",
   description: "Portfolio of Khaled Yousef, a QA Team Lead passionate about automation, quality assurance, and perfect user experiences.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Khaled Yousef Portfolio',
+    title: 'Khaled Yousef | QA Team Lead',
+    description: 'Portfolio of Khaled Yousef, a QA Team Lead passionate about automation, quality assurance, and perfect user experiences.',
+  },
 };
 
 export default function RootLayout({
