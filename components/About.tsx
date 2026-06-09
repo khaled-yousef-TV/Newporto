@@ -7,15 +7,15 @@ import { Code, Terminal, Brain, Cpu, Zap, ArrowRight } from "lucide-react";
 export default function About() {
   const stats = [
     { value: "5+", label: "Years QA" },
-    { value: "∞", label: "Bugs Caught" },
-    { value: "AI", label: "@ JKU" },
+    { value: "1", label: "Live AI Product" },
+    { value: "AI", label: "MSc @ JKU" },
   ];
 
   const skills = [
-    { icon: Terminal, label: "QA Automation", description: "Selenium, Ranorex" },
-    { icon: Brain, label: "AI & LLMs", description: "GPT, LangChain" },
-    { icon: Code, label: "Test Frameworks", description: "Java, Python" },
-    { icon: Cpu, label: "CI/CD", description: "GitLab" },
+    { icon: Terminal, label: "QA Automation", description: "Selenium, Ranorex, DeepEval" },
+    { icon: Brain, label: "AI & LLMs", description: "Claude, Gemini, LangChain" },
+    { icon: Code, label: "Full-Stack", description: "Python, FastAPI, React" },
+    { icon: Cpu, label: "CI/CD", description: "GitLab, GitHub Actions" },
   ];
 
   return (
@@ -117,16 +117,21 @@ export default function About() {
               </p>
               
               <p className="text-lg text-foreground/60 leading-relaxed">
-                I bridge the gap between software quality and artificial intelligence. 
-                My obsession? Building systems that are not just bug-free, but intelligent.
-                Currently diving deep into Large Language Models while ensuring 
-                top-notch quality for enterprise software.
+                I bridge the gap between software quality and artificial intelligence —
+                and I ship. From{" "}
+                <a href="https://fplai.nl" target="_blank" rel="noopener noreferrer" className="text-pastel-green hover:underline">
+                  fplai.nl
+                </a>
+                , a live AI-powered Fantasy Premier League advisor, to LLM testing
+                frameworks that bring real QA rigor to AI features. Currently diving
+                deep into Large Language Models while ensuring top-notch quality for
+                enterprise software.
               </p>
 
               {/* Highlighted Quote */}
               <div className="relative pl-6 border-l-2 border-pastel-purple/50">
                 <p className="text-foreground/70 italic">
-                  "The best bug is the one that never reaches production."
+                  &ldquo;The best bug is the one that never reaches production.&rdquo;
                 </p>
               </div>
             </div>
@@ -167,7 +172,7 @@ export default function About() {
                 href="#contact" 
                 className="inline-flex items-center gap-2 text-pastel-purple hover:gap-4 transition-all group"
               >
-                <span className="text-sm uppercase tracking-widest font-medium">Let's work together</span>
+                <span className="text-sm uppercase tracking-widest font-medium">Let&apos;s work together</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>

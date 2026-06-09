@@ -2,11 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="py-20 px-6 md:px-10 bg-pastel-pink/20 text-foreground mt-20">
+    <footer id="contact" className="relative py-20 px-6 md:px-10 text-foreground mt-20 overflow-hidden border-t border-white/5">
+      {/* Ambient glow */}
+      <div className="absolute -bottom-40 left-1/4 w-96 h-96 bg-pastel-purple/15 rounded-full blur-[120px] -z-10" />
+      <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-pastel-green/10 rounded-full blur-[120px] -z-10" />
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16">
         
         <div className="space-y-8 md:w-1/2">
@@ -29,7 +32,8 @@ export default function Footer() {
           </div>
 
           <p className="text-foreground/60 max-w-sm">
-            QA Automation Expert | AI Student at JKU | LLM Enthusiast | Selenium & Ranorex Pro.
+            QA Lead @ TeamViewer · AI MSc @ JKU · Building LLM-powered products
+            and the frameworks that test them.
           </p>
         </div>
 
@@ -42,7 +46,7 @@ export default function Footer() {
            <div className="grid grid-cols-2 gap-8 text-sm text-foreground/60 uppercase tracking-wider">
               <div>
                 <h4 className="text-foreground mb-2">Version</h4>
-                <p>2025 © Edition</p>
+                <p>2026 © Edition</p>
               </div>
               <div>
                 <h4 className="text-foreground mb-2">Timezone</h4>

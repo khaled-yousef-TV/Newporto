@@ -19,8 +19,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Khaled Yousef | QA Team Lead",
-  description: "Portfolio of Khaled Yousef, a QA Team Lead passionate about automation, quality assurance, and perfect user experiences.",
+  title: "Khaled Yousef | QA Lead × AI Engineer",
+  description: "Portfolio of Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. Builder of fplai.nl and LLM testing frameworks that bring QA rigor to AI.",
   robots: {
     index: true,
     follow: true,
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'Khaled Yousef Portfolio',
-    title: 'Khaled Yousef | QA Team Lead',
-    description: 'Portfolio of Khaled Yousef, a QA Team Lead passionate about automation, quality assurance, and perfect user experiences.',
+    title: 'Khaled Yousef | QA Lead × AI Engineer',
+    description: 'Portfolio of Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. Builder of fplai.nl and LLM testing frameworks that bring QA rigor to AI.',
   },
 };
 
