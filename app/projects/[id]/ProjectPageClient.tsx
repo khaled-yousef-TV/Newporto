@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Github, Globe, CheckCircle2 } from "lucide-react";
 import { ProjectCard } from "@/components/ProjectCard";
 import ScrambleText from "@/components/ScrambleText";
+import Magnetic from "@/components/Magnetic";
 import type { Project } from "@/lib/projects";
 
 interface Props {
@@ -63,27 +64,31 @@ export default function ProjectPageClient({ project }: Props) {
           className="flex gap-3 flex-wrap mt-8"
         >
           {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-black transition-transform hover:scale-105"
-              style={{ background: project.accent }}
-            >
-              <Globe size={18} />
-              Visit Live Site
-            </a>
+            <Magnetic strength={0.25}>
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-black"
+                style={{ background: project.accent }}
+              >
+                <Globe size={18} />
+                Visit Live Site
+              </a>
+            </Magnetic>
           )}
           {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 glass rounded-full font-medium hover:bg-white/10 transition-colors"
-            >
-              <Github size={18} />
-              View Source
-            </a>
+            <Magnetic strength={0.25}>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 glass rounded-full font-medium hover:bg-white/10 transition-colors"
+              >
+                <Github size={18} />
+                View Source
+              </a>
+            </Magnetic>
           )}
         </motion.div>
       </section>

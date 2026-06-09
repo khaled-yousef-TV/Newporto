@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
 import ScrambleText from "./ScrambleText";
+import Magnetic from "./Magnetic";
 
 export default function Footer() {
   return (
@@ -41,8 +42,12 @@ export default function Footer() {
 
         <div className="md:w-1/2 flex flex-col justify-between space-y-10">
            <div className="flex gap-6">
-              <Link href="https://github.com/khaled-yousef-TV" target="_blank" rel="noopener noreferrer" className="hover:text-pastel-purple transition-colors"><Github /></Link>
-              <Link href="https://www.linkedin.com/in/khaled-yousef-b7281510b/" target="_blank" rel="noopener noreferrer" className="hover:text-pastel-purple transition-colors"><Linkedin /></Link>
+              <Magnetic>
+                <Link href="https://github.com/khaled-yousef-TV" target="_blank" rel="noopener noreferrer" className="block p-2 hover:text-pastel-green transition-colors"><Github /></Link>
+              </Magnetic>
+              <Magnetic>
+                <Link href="https://www.linkedin.com/in/khaled-yousef-b7281510b/" target="_blank" rel="noopener noreferrer" className="block p-2 hover:text-pastel-green transition-colors"><Linkedin /></Link>
+              </Magnetic>
            </div>
 
            <div className="grid grid-cols-2 gap-8 text-sm text-foreground/60 uppercase tracking-wider">

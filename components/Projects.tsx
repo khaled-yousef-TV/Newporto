@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Star, GitBranch, Globe } from "lucide-react";
 import { ProjectCard } from "./ProjectCard";
 import ScrambleText from "./ScrambleText";
+import TiltCard from "./TiltCard";
 import { projectsData } from "@/lib/projects";
 import { useGitHubStats, LANGUAGE_COLORS, timeAgo } from "@/lib/useGitHubStats";
 
@@ -49,8 +50,9 @@ export default function Projects() {
               className={project.featured ? "md:col-span-2" : ""}
             >
               <Link href={`/projects/${project.id}`} className="group block h-full">
+                <TiltCard accent={project.accent}>
                 <div
-                  className="glass rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 group-hover:-translate-y-1"
+                  className="glass rounded-2xl overflow-hidden h-full flex flex-col"
                   style={{ ["--card-accent" as string]: project.accent }}
                 >
                   {/* Visual */}
@@ -138,6 +140,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
+                </TiltCard>
               </Link>
             </motion.div>
           );

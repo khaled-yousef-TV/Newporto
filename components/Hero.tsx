@@ -1,18 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HeroText from "./HeroText";
+import MatrixRain from "./MatrixRain";
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  // content drifts up and fades as you scroll past the hero
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const rainOpacity = useTransform(scrollYProgress, [0, 0.6], [0.16, 0]);
+
   return (
-    <section className="h-screen w-full flex flex-col justify-center items-center px-6 md:px-10 relative overflow-hidden bg-background">
+    <section ref={ref} className="h-screen w-full flex flex-col justify-center items-center px-6 md:px-10 relative overflow-hidden bg-background">
       <div className="absolute inset-0 -z-10 bg-background" />
+      {/* Matrix digital rain */}
+      <motion.div style={{ opacity: rainOpacity }} className="absolute inset-0 -z-10">
+        <MatrixRain className="w-full h-full" />
+        {/* keep the center readable */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,_var(--background)_0%,_transparent_100%)]" />
+      </motion.div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,_var(--tw-gradient-stops))] from-pastel-green/8 via-transparent to-transparent" />
       {/* Ambient orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-pastel-green/8 rounded-full blur-[120px] -z-10 animate-float-slow" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-pastel-purple/8 rounded-full blur-[120px] -z-10 animate-float-slow" style={{ animationDelay: "-6s" }} />
-      
-      <div className="flex flex-col items-center text-center space-y-6 md:space-y-10 z-10">
+
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="flex flex-col items-center text-center space-y-6 md:space-y-10 z-10">
         
         <HeroText />
 
@@ -58,7 +76,7 @@ export default function Hero() {
             <div className="w-px h-8 bg-gradient-to-b from-foreground/30 to-transparent" />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -70,7 +70,7 @@ export default function About() {
               </motion.div>
 
               {/* Main Image */}
-              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10">
                 <Image 
                   src="/profile.jpg"
                   alt="Khaled Yousef"

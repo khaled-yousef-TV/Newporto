@@ -52,9 +52,9 @@ export default function HeroText() {
             <div key={index} className="relative">
               <motion.span
                 initial={{ opacity: 0.15 }}
-                animate={{ 
+                animate={{
                   opacity: currentTest >= index ? 1 : 0.15,
-                  color: currentTest >= index ? "var(--color-primary)" : "currentColor"
+                  color: currentTest >= index ? "var(--color-primary)" : "var(--foreground)"
                 }}
                 transition={{ duration: 0.2 }}
                 className="inline-block"
