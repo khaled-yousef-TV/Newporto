@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Github, Globe, CheckCircle2 } from "lucide-react";
 import { ProjectCard } from "@/components/ProjectCard";
+import ScrambleText from "@/components/ScrambleText";
 import type { Project } from "@/lib/projects";
 
 interface Props {
@@ -46,8 +47,8 @@ export default function ProjectPageClient({ project }: Props) {
           >
             {project.category}
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6">
-            {project.title}
+          <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6 crt-glow">
+            <ScrambleText text={project.title} speed={22} />
           </h1>
           <p className="text-xl text-foreground/70 max-w-2xl leading-relaxed">
             {project.description}

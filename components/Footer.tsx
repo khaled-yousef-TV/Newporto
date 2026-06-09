@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
+import ScrambleText from "./ScrambleText";
 
 export default function Footer() {
   return (
@@ -17,9 +18,10 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none"
+            className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none crt-glow"
           >
-            Let&apos;s work <br /> together!
+            <ScrambleText text="Let's work" /> <br />
+            <ScrambleText text="together!" speed={35} />
           </motion.h2>
           
           <div>

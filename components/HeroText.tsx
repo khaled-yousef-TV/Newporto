@@ -47,7 +47,7 @@ export default function HeroText() {
       <h1 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter text-foreground flex flex-col items-center overflow-visible">
         
         {/* QUALITY */}
-        <div className="flex relative">
+        <div className="flex relative crt-glow">
           {letters.map((letter, index) => (
             <div key={index} className="relative">
               <motion.span
@@ -148,7 +148,7 @@ export default function HeroText() {
               ? { duration: 1.5, times: [0, 0.05, 0.1, 0.3, 0.35, 0.4, 0.6, 0.8, 0.85, 1], ease: "linear" }
               : { duration: 0.3 }
             }
-            className="font-light italic text-pastel-purple pr-4"
+            className="font-light italic text-pastel-purple pr-4 crt-glow-amber"
           >
             is my craft
           </motion.div>

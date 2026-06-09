@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Core surface palette — deep space */
-  --background: #07080c;
-  --foreground: #f4f4f5;
-  --surface: #0d0f15;
-  --surface-raised: #12151d;
+  /* Matrix Terminal palette — phosphor on near-black */
+  --background: #050805;
+  --foreground: #d8ffe8;
+  --surface: #081008;
+  --surface-raised: #0b150c;
 
   /* Signature accents */
-  --color-primary: #34d399;   /* emerald — pass / go */
-  --color-secondary: #a78bfa; /* violet — AI */
-  --color-tertiary: #22d3ee;  /* cyan — code */
-  --color-quaternary: #fb7185;/* rose — bugs */
+  --color-primary: #00ff88;   /* phosphor green — pass / go */
+  --color-secondary: #ffb000; /* amber — warnings / highlights */
+  --color-tertiary: #00e5c7;  /* mint-cyan — code */
+  --color-quaternary: #ff3b3b;/* red — bugs */
 }
 
 @theme inline {
@@ -38,6 +38,35 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+/* CRT scanlines */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0.18;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.22) 0px,
+    rgba(0, 0, 0, 0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Phosphor glow for hero / headings */
+.crt-glow {
+  text-shadow:
+    0 0 8px rgba(0, 255, 136, 0.45),
+    0 0 28px rgba(0, 255, 136, 0.18);
+}
+.crt-glow-amber {
+  text-shadow:
+    0 0 8px rgba(255, 176, 0, 0.4),
+    0 0 28px rgba(255, 176, 0, 0.15);
+}
+
 /* Film grain over everything — subtle texture */
 body::after {
   content: "";
@@ -57,7 +86,7 @@ body::after {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2d36;
+  background: #16301e;
   border-radius: 5px;
   border: 2px solid var(--background);
 }
@@ -67,7 +96,7 @@ body::after {
 
 ::selection {
   background: var(--color-primary);
-  color: #06281c;
+  color: #03180d;
 }
 
 /* Project card title takes the card's accent on hover */

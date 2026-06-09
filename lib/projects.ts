@@ -23,8 +23,8 @@ export const projectsData: Project[] = [
     tagline: "AI that picks your Fantasy Premier League squad — and tells you why.",
     description:
       "A full-stack AI dashboard that suggests next-gameweek squads and transfers with clear reasoning: multi-method predictions, FPL rule enforcement, European rotation risk, trend-reversal signals and betting-odds integration. Live in production.",
-    gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    accent: "#34d399",
+    gradient: "from-green-500/20 via-emerald-500/10 to-transparent",
+    accent: "#00ff88",
     iconName: "TrendingUp",
     tech: ["Python", "FastAPI", "React", "Vite", "PostgreSQL", "Pydantic", "FPL API"],
     github: "https://github.com/khaled-yousef-TV/AIFPL",
@@ -47,8 +47,8 @@ export const projectsData: Project[] = [
     tagline: "A Claude-powered co-pilot for writing a Masters thesis.",
     description:
       "Local web app that turns a thesis into a binder-style workspace: paste a section and get APA analysis via Claude plus a GPTZero AI-scan, check theme fit against every saved draft, and chat with a persistent “thesis memory”.",
-    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
-    accent: "#a78bfa",
+    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
+    accent: "#ffb000",
     iconName: "BookOpen",
     tech: ["Python", "FastAPI", "Claude API", "GPTZero", "HTML", "CSS"],
     github: "https://github.com/khaled-yousef-TV/ThesisPartner",
@@ -68,8 +68,8 @@ export const projectsData: Project[] = [
     tagline: "Bringing real QA rigor to LLM-powered features.",
     description:
       "A bilingual testing framework: Java Selenium drives the UI and captures LLM responses, a Python FastAPI service scores them with Gemini across 7 evaluation metrics — accuracy, relevancy, coherence, hallucination, faithfulness, compliance and toxicity.",
-    gradient: "from-cyan-500/20 via-sky-500/10 to-transparent",
-    accent: "#22d3ee",
+    gradient: "from-teal-500/20 via-cyan-500/10 to-transparent",
+    accent: "#00e5c7",
     iconName: "TestTube",
     tech: ["Java", "Selenium", "Python", "FastAPI", "DeepEval", "Gemini"],
     github: "https://github.com/khaled-yousef-TV/selenium-deepEval-JavaPython",
@@ -89,8 +89,8 @@ export const projectsData: Project[] = [
     tagline: "From user story to test suite in one prompt.",
     description:
       "Generates comprehensive test cases from user stories, requirements or acceptance criteria using LLMs — with smart edge-case detection, Gherkin/BDD or pytest output, and requirements pulled straight from Jira.",
-    gradient: "from-rose-500/20 via-pink-500/10 to-transparent",
-    accent: "#fb7185",
+    gradient: "from-lime-500/20 via-green-500/10 to-transparent",
+    accent: "#aaff00",
     iconName: "Sparkles",
     tech: ["Python", "Gemini", "LangChain", "Pytest", "Jira API"],
     github: "https://github.com/khaled-yousef-TV/ai-test-generator",

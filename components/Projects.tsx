@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Star, GitBranch, Globe } from "lucide-react";
 import { ProjectCard } from "./ProjectCard";
+import ScrambleText from "./ScrambleText";
 import { projectsData } from "@/lib/projects";
 import { useGitHubStats, LANGUAGE_COLORS, timeAgo } from "@/lib/useGitHubStats";
 
@@ -22,8 +23,11 @@ export default function Projects() {
         <span className="font-mono text-xs text-pastel-green tracking-widest uppercase">
           $ git log --author=khaled
         </span>
-        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mt-3">
-          Selected <span className="text-pastel-purple">Work</span>
+        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mt-3 crt-glow">
+          <ScrambleText text="Selected " />
+          <span className="text-pastel-purple crt-glow-amber">
+            <ScrambleText text="Work" speed={40} />
+          </span>
         </h2>
         <p className="text-foreground/50 mt-4 max-w-xl">
           Real projects, live from GitHub — where QA discipline meets AI engineering.

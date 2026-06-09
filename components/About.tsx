@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Code, Terminal, Brain, Cpu, Zap, ArrowRight } from "lucide-react";
+import ScrambleText from "./ScrambleText";
 
 export default function About() {
   const stats = [
@@ -34,9 +35,9 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="text-pastel-purple text-sm uppercase tracking-widest">Get to know me</span>
-          <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter mt-2">
-            About
+          <span className="font-mono text-pastel-purple text-sm uppercase tracking-widest">$ whoami</span>
+          <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter mt-2 crt-glow">
+            <ScrambleText text="About" speed={45} />
           </h2>
         </motion.div>
 

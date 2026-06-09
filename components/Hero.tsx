@@ -7,10 +7,10 @@ export default function Hero() {
   return (
     <section className="h-screen w-full flex flex-col justify-center items-center px-6 md:px-10 relative overflow-hidden bg-background">
       <div className="absolute inset-0 -z-10 bg-background" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,_var(--tw-gradient-stops))] from-pastel-purple/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,_var(--tw-gradient-stops))] from-pastel-green/8 via-transparent to-transparent" />
       {/* Ambient orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-pastel-green/8 rounded-full blur-[120px] -z-10 animate-float-slow" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-pastel-purple/10 rounded-full blur-[120px] -z-10 animate-float-slow" style={{ animationDelay: "-6s" }} />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-pastel-purple/8 rounded-full blur-[120px] -z-10 animate-float-slow" style={{ animationDelay: "-6s" }} />
       
       <div className="flex flex-col items-center text-center space-y-6 md:space-y-10 z-10">
         
