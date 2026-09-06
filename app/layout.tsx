@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,15 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-});
-
 export const metadata: Metadata = {
-  title: "Khaled Yousef | QA Lead × AI Engineer",
-  description: "Portfolio of Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. Builder of fplai.nl and LLM testing frameworks that bring QA rigor to AI.",
+  title: "Khaled Yousef — AI Quality Engineering & LLM Evaluation",
+  description: "Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. LLM evaluation, AI-powered test automation, and auditable AI systems with Selenium, DeepEval, Python, and Java.",
   robots: {
     index: true,
     follow: true,
@@ -35,8 +29,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'Khaled Yousef Portfolio',
-    title: 'Khaled Yousef | QA Lead × AI Engineer',
-    description: 'Portfolio of Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. Builder of fplai.nl and LLM testing frameworks that bring QA rigor to AI.',
+    title: 'Khaled Yousef — AI Quality Engineering & LLM Evaluation',
+    description: 'Khaled Yousef — QA Lead at TeamViewer and AI MSc student at JKU. LLM evaluation, AI-powered test automation, and auditable AI systems with Selenium, DeepEval, Python, and Java.',
   },
 };
 
@@ -46,9 +40,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         {children}
       </body>
