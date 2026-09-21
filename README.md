@@ -1,50 +1,48 @@
-Both khaledyousef.io and its alternate name are improperly configured
-Domain's DNS record could not be retrieved. For more information, see documentation (InvalidDNSError).# Portfolio Website
+# Khaled Yousef — AI Quality Engineering
 
-This is a portfolio website template built with Next.js, Tailwind CSS, and Framer Motion, designed to look like [Bettina Sosa's portfolio](https://www.bettinasosa.com).
+Portfolio built with Next.js, React, Tailwind CSS, and Framer Motion. GitHub hosts the source code; Render builds and hosts the static site.
 
-## Getting Started
+## Local development
 
-1.  **Install dependencies:**
+```sh
+npm ci
+npm run dev
+```
 
-    ```bash
-    npm install
-    ```
+Open http://localhost:3000. Development uses `.next-preview` to keep its cache separate from production builds.
 
-2.  **Run the development server:**
+## Content
 
-    ```bash
-    npm run dev
-    ```
+- `components/Portfolio.tsx`: homepage, project pipeline, and contact information.
+- `components/QualitySignal.tsx`: neural-network and CI/CD animation.
+- `components/BrandMark.tsx`: KY logo.
+- `lib/projects.ts`: project content and repository links.
+- `lib/activity.json`: dated repository activity snapshot.
+- `app/globals.css`: layout and visual styling.
 
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Render deployment
 
-## Customization
+Create a **Static Site** linked to `khaled-yousef-TV/Newporto` with:
 
-You can customize the content by editing the files in the `components` directory:
+| Setting | Value |
+| --- | --- |
+| Branch | `main` |
+| Root directory | Repository root (leave blank) |
+| Build command | `npm ci && npm run build` |
+| Publish directory | `out` |
+| Auto-deploy | On Commit |
 
--   `components/Header.tsx`: Logo and Menu items.
--   `components/Hero.tsx`: Main hero text ("Creativity is my craft...").
--   `components/About.tsx`: About me text and image placeholder.
--   `components/Projects.tsx`: Project list and descriptions.
--   `components/Footer.tsx`: Contact information and social links.
+Next.js uses `output: "export"` to generate the static site. Render builds directly from the repository; no GitHub Actions workflow is required.
 
-## Deployment to GitHub Pages
+- Render URL: https://portofolio-vlj9.onrender.com
+- Custom domain: https://khaledyousef.io
 
-This project is configured to deploy to GitHub Pages using GitHub Actions.
+Manage domain verification and HTTPS in Render's **Settings → Custom Domains**, and DNS records in Squarespace. Domain routing is configured in those services, not in repository files.
 
-1.  **Push to GitHub:**
-    Push this repository to your GitHub account.
+## Production validation
 
-2.  **Configure GitHub Pages:**
-    -   Go to your repository settings on GitHub.
-    -   Navigate to "Pages" in the sidebar.
-    -   Under "Build and deployment", select **GitHub Actions** as the source.
+```sh
+npm run build
+```
 
-3.  **Deployment:**
-    -   The included workflow `.github/workflows/deploy.yml` will automatically build and deploy your site whenever you push to the `main` branch.
-    -   You can verify the deployment in the "Actions" tab of your repository.
-
-## Important Note
-
-This project uses `next export` (via `output: 'export'` in `next.config.ts`) to generate a static site suitable for GitHub Pages. Dynamic features that require a Node.js server (like API routes or SSR) will not work without modification.
+The exported pages and assets are written to `out/`.
