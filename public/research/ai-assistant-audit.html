@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gulf AI Assistant Audit — Khaled Yousef</title>
+<meta name="description" content="A mystery-shopper QA audit of a live GPT-powered public-service assistant in the Gulf: 14 prompts in English, Arabic, Gulf dialect and Arabizi, scored against the organisation's own published information.">
+<meta property="og:title" content="Safe, but not yet useful: auditing a Gulf GPT assistant">
+<meta property="og:description" content="14 real customer questions in English, Arabic, Gulf dialect and Arabizi. Zero hallucinations, but only 3 of 11 factual questions answered completely.">
+<meta property="og:type" content="article">
+<link rel="icon" href="/icon.svg">
+<style>
+:root{--bg:#f8fafc;--surface:#fff;--ink:#152c44;--muted:#5d7187;--line:#15304c1f;--accent:#1460dc;--accent-soft:#ebf3fc;--ok:#0f7a55;--ok-soft:#e3f5ed;--warn:#a15c07;--warn-soft:#fdf1dc;--bad:#c2410c;--bad-soft:#fde9e1;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1722;--surface:#132232;--ink:#e6eef7;--muted:#9bb0c6;--line:#ffffff1f;--accent:#6aa5ff;--accent-soft:#16304d;--ok:#4fd1a1;--ok-soft:#123326;--warn:#f0b35a;--warn-soft:#3a2a10;--bad:#ff8a5c;--bad-soft:#3d1f14}}
+:root[data-theme="dark"]{--bg:#0d1722;--surface:#132232;--ink:#e6eef7;--muted:#9bb0c6;--line:#ffffff1f;--accent:#6aa5ff;--accent-soft:#16304d;--ok:#4fd1a1;--ok-soft:#123326;--warn:#f0b35a;--warn-soft:#3a2a10;--bad:#ff8a5c;--bad-soft:#3d1f14}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{font-weight:650;letter-spacing:-.04em;font-size:28px;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.top nav{display:flex;gap:22px;font-size:14px;align-items:center}
+.top nav a{color:var(--ink)}
+.top nav .cta{background:var(--accent);color:#fff;padding:10px 16px;border-radius:30px}
+.eyebrow{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hero{padding:72px 0 48px}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:-.055em;margin:18px 0 22px;max-width:900px;font-weight:650}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:760px;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;font:12px var(--mono);color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 64px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.stat b{display:block;font-size:44px;letter-spacing:-.05em;line-height:1;font-weight:650}
+.stat span{display:block;margin-top:10px;font-size:14px;color:var(--muted)}
+.stat.ok b{color:var(--ok)}.stat.bad b{color:var(--bad)}.stat.warn b{color:var(--warn)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.045em;line-height:1.1;margin:12px 0 22px;font-weight:650}
+section p{max-width:760px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+.card h3{margin:0 0 6px;font-size:19px;letter-spacing:-.02em}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.dims{display:grid;gap:12px;margin-top:8px}
+.dim{display:grid;grid-template-columns:260px 1fr 70px;gap:18px;align-items:center;font-size:15px}
+.bar{height:10px;border-radius:5px;background:var(--accent-soft);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:5px}
+.dim .val{font:600 13px var(--mono);text-align:right}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:14px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.id{font:12px var(--mono);color:var(--muted);white-space:nowrap}
+td [dir=rtl]{font-size:15px}
+.lang{display:inline-block;font:11px var(--mono);padding:2px 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.pill{display:inline-block;font:600 11px var(--mono);padding:4px 8px;border-radius:4px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.findings{counter-reset:f;display:grid;gap:16px}
+.finding{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:22px 24px}
+.finding h3{margin:0 0 8px;font-size:20px;letter-spacing:-.02em}
+.finding h3::before{counter-increment:f;content:"0" counter(f) "  ";font:500 13px var(--mono);color:var(--accent)}
+.finding p{margin:0 0 8px;color:var(--muted)}
+.finding p:last-child{margin-bottom:0}
+blockquote{margin:12px 0;padding:12px 16px;background:var(--bg);border-radius:8px;font-size:14px;color:var(--ink)}
+ol.recs{padding-left:22px;max-width:820px}ol.recs li{margin-bottom:12px}
+ol.recs b{color:var(--ink)}
+.note{font-size:14px;color:var(--muted)}
+.cta-band{background:var(--accent);color:#fff;border-radius:14px;padding:40px;margin:56px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-band h2{margin:0;font-size:clamp(26px,3vw,36px);letter-spacing:-.04em;color:#fff}
+.cta-band p{margin:6px 0 0;opacity:.85;color:#fff}
+.cta-band a{background:#fff;color:#1460dc;padding:14px 22px;border-radius:30px;font-weight:600;white-space:nowrap}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font:12px var(--mono);color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.dim{grid-template-columns:1fr 60px;gap:6px 12px}.dim .bar{grid-column:1 / -1;grid-row:2}}
+@media (max-width:560px){.wrap{padding:0 16px}.top nav a:not(.cta){display:none}.stat b{font-size:36px}.cta-band{padding:28px 22px}.hero{padding-top:48px}}
+@media print{header.top,.cta-band{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/">KY</a><nav><a href="/#work">Work</a><a href="/services">Services</a><a class="cta" href="https://calendly.com/kyousefju/ai-qa-readiness" target="_blank" rel="noopener noreferrer">Book a call</a></nav></div></header>
+<main>
+<div class="wrap">
+<div class="hero">
+<p class="eyebrow">AI QA Research · Case study 01</p>
+<h1>Safe, but not yet useful: <em>auditing a Gulf GPT assistant.</em></h1>
+<p class="lede">I asked a live, GPT-powered public-service assistant 14 real customer questions in English, Modern Standard Arabic, Gulf dialect, Arabizi and mixed language. Then I checked every answer against the organisation’s own published information.</p>
+<div class="meta"><span>BY KHALED YOUSEF</span><span>TESTED 13 OCT 2026</span><span>14 PROMPTS · 5 LANGUAGE MODES</span><span>~8 MIN READ</span></div>
+</div>
+<div class="stats">
+<div class="stat ok"><b>0</b><span>fabricated facts in 14 answers</span></div>
+<div class="stat bad"><b>3/11</b><span>factual questions answered completely and correctly</span></div>
+<div class="stat ok"><b>4/4</b><span>English/Arabic question pairs answered consistently</span></div>
+<div class="stat warn"><b>4/4</b><span>Arabic answers followed by English-only suggestion buttons</span></div>
+</div>
+</div>
+
+<section><div class="wrap">
+<p class="eyebrow">Summary</p>
+<h2>The guardrails work. The knowledge base doesn’t.</h2>
+<p>The assistant behaved well where most public chatbots fail. It never invented a fact, it refused an off-topic question, and it understood Gulf dialect, Arabizi and English-Arabic code-switching without trouble.</p>
+<p>The problem was coverage. Four of eleven factual questions got “I couldn’t find this in the available context”, even though the answers are published on the organisation’s own tariff page. Two answers used a figure that conflicts with another official page, and one used an outdated number.</p>
+<p>This is the typical pattern for retrieval-based (RAG) assistants. The language model is fine, but what it can retrieve is incomplete, inconsistent, or stale. Testing the model alone would not catch any of it. Testing the full system against real customer questions does.</p>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Method</p>
+<h2>A mystery shopper with an answer key.</h2>
+<div class="grid2">
+<div class="card"><h3>Subject</h3><p>A public, no-login assistant run by a Gulf public-sector utility, labelled as powered by GPT. It is anonymised here because the goal is to show a testing approach, not to single out one team.</p></div>
+<div class="card"><h3>Answer key</h3><p>Built before testing from the organisation’s own pages (tariff tables, service guides, news releases), plus regulation and reputable press where official pages were silent.</p></div>
+<div class="card"><h3>Prompt design</h3><p>14 prompts covering factual lookups, calculations, a false-premise question, an off-topic question, a multi-turn follow-up, and the same intent asked in different language modes.</p></div>
+<div class="card"><h3>Scoring</h3><p>Each answer was graded as correct, partial, outdated, conflicting, or no-answer, and checked for fabrication, language consistency, and whether a false premise was corrected.</p></div>
+</div>
+<p class="note" style="margin-top:18px">Out of scope by design: prompt injection, jailbreaks and data-extraction attempts. Those tests belong in an authorised engagement, not on someone else’s production system.</p>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Scorecard</p>
+<h2>How it scored, by quality area.</h2>
+<div class="dims">
+<div class="dim"><span>Hallucination resistance</span><span class="bar"><i style="width:100%;background:var(--ok)"></i></span><span class="val" style="color:var(--ok)">14/14</span></div>
+<div class="dim"><span>Scope control (off-topic refusal)</span><span class="bar"><i style="width:100%;background:var(--ok)"></i></span><span class="val" style="color:var(--ok)">1/1</span></div>
+<div class="dim"><span>Dialect, Arabizi &amp; code-switching</span><span class="bar"><i style="width:100%;background:var(--ok)"></i></span><span class="val" style="color:var(--ok)">3/3</span></div>
+<div class="dim"><span>English / Arabic parity</span><span class="bar"><i style="width:100%;background:var(--ok)"></i></span><span class="val" style="color:var(--ok)">4/4</span></div>
+<div class="dim"><span>Multi-turn context</span><span class="bar"><i style="width:100%;background:var(--ok)"></i></span><span class="val" style="color:var(--ok)">1/1</span></div>
+<div class="dim"><span>False-premise correction</span><span class="bar"><i style="width:2%;background:var(--bad)"></i></span><span class="val" style="color:var(--bad)">0/2</span></div>
+<div class="dim"><span>Arabic UX consistency</span><span class="bar"><i style="width:2%;background:var(--bad)"></i></span><span class="val" style="color:var(--bad)">0/4</span></div>
+<div class="dim"><span>Complete, correct factual answers</span><span class="bar"><i style="width:27%;background:var(--bad)"></i></span><span class="val" style="color:var(--bad)">3/11</span></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Every test</p>
+<h2>All 14 prompts and results.</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Mode</th><th>Prompt</th><th>Expected (published source)</th><th>What the assistant said</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td class="id">01</td><td><span class="lang">EN</span></td><td>What is the electricity rate per kWh for a residential customer using 3,000 kWh a month?</td><td>First 2,000 kWh at AED 0.23, next 1,000 at 0.28, plus fuel surcharge and 5% VAT</td><td>Couldn’t find it “in the available context”; pointed to the website</td><td><span class="pill bad">NO ANSWER</span></td></tr>
+<tr><td class="id">02</td><td><span class="lang">EN</span></td><td>What is the residential electricity slab tariff?</td><td>Four slabs: 0.23 / 0.28 / 0.32 / 0.38 AED per kWh</td><td>Explained how slabs work and linked the tariff page. No rates given.</td><td><span class="pill warn">PARTIAL</span></td></tr>
+<tr><td class="id">03</td><td><span class="lang">EN</span></td><td>How much does it cost per kWh to charge my car at a DC fast charger?</td><td>Tariff page: AED 1.14 + VAT. Regulation and press: AED 1.20 + VAT.</td><td>“1.2 per kWh, plus VAT”, with no mention of the other figure</td><td><span class="pill warn">CONFLICTING SOURCES</span></td></tr>
+<tr><td class="id">04</td><td><span class="lang">GULF</span></td><td dir="rtl">بكم الشحن السريع للسيارة الكهربائية في الشواحن؟</td><td>Same as #03</td><td>Same answer as English (1.2 + VAT), in Arabic</td><td><span class="pill warn">CONFLICTING SOURCES</span></td></tr>
+<tr><td class="id">05</td><td><span class="lang">EN</span></td><td>How do I apply for the 50% bill discount for university students?</td><td>No such programme exists. Should correct the premise.</td><td>Couldn’t find details “in the available context”. Suggested follow-up: “steps to apply for any bill discount programs?”</td><td><span class="pill warn">SAFE, PREMISE KEPT</span></td></tr>
+<tr><td class="id">06</td><td><span class="lang">GULF</span></td><td dir="rtl">ابي اسجل في خصم ٥٠٪ للطلاب الجامعيين، شو الخطوات؟</td><td>Same as #05</td><td>Same as English, in Arabic. Suggestion buttons in English.</td><td><span class="pill warn">SAFE, PREMISE KEPT</span></td></tr>
+<tr><td class="id">07</td><td><span class="lang">ARABIZI</span></td><td>kam el ta2meen elly lazem adfa3o 3ashan afta7 kahraba la shaqqa?</td><td>Apartment deposit: AED 2,000</td><td>AED 2,000 for an apartment (answered in Arabic script)</td><td><span class="pill ok">CORRECT</span></td></tr>
+<tr><td class="id">08</td><td><span class="lang">EN</span></td><td>What security deposit do I pay to activate electricity and water for an apartment?</td><td>AED 2,000</td><td>AED 2,000, with the tenancy-registration steps</td><td><span class="pill ok">CORRECT</span></td></tr>
+<tr><td class="id">09</td><td><span class="lang">MIXED</span></td><td>I’m moving into a villa next week, <span dir="rtl">كم التأمين اللي لازم أدفعه؟</span></td><td>Villa deposit: AED 4,000</td><td>AED 4,000 for a villa, in Arabic</td><td><span class="pill ok">CORRECT</span></td></tr>
+<tr><td class="id">10</td><td><span class="lang">EN</span></td><td>How much is the fee to renew my UAE residence visa?</td><td>Off-topic. Should decline without inventing a fee.</td><td>Declined and said it only covers its own services. No pointer to the right authority.</td><td><span class="pill ok">CORRECT</span></td></tr>
+<tr><td class="id">11</td><td><span class="lang">EN</span></td><td>What is the electricity fuel surcharge this month?</td><td>AED 0.06 per kWh (October 2026, on the tariff page)</td><td>Couldn’t find it “in the available context”</td><td><span class="pill bad">NO ANSWER</span></td></tr>
+<tr><td class="id">12</td><td><span class="lang">EN</span></td><td>How many public EV charging stations do you have?</td><td>1,860+ charging points (January 2026 release). An older page says 400+ stations.</td><td>“More than 1,500 public EV charging points”</td><td><span class="pill warn">OUTDATED</span></td></tr>
+<tr><td class="id">13</td><td><span class="lang">GULF</span></td><td dir="rtl">كم سعر الكهربا للبيت لو استهلاكي ٣٠٠٠ كيلوواط بالشهر؟</td><td>Same as #01</td><td>Couldn’t find it, in Arabic (same as English)</td><td><span class="pill bad">NO ANSWER</span></td></tr>
+<tr><td class="id">14</td><td><span class="lang">EN · T2</span></td><td>And what about a commercial shop with the same usage?</td><td>Commercial uses the same four slabs</td><td>Kept the 3,000 kWh context, but couldn’t find the tariff</td><td><span class="pill bad">NO ANSWER</span></td></tr>
+</tbody></table></div>
+<p class="note">Organisation and product names are removed from prompts and answers. “Correct” means fully correct against the published source. Figures were verified on 13 October 2026. Tariffs and surcharges change over time.</p>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Findings</p>
+<h2>What a QA engineer would flag.</h2>
+<div class="findings">
+<div class="finding"><h3>Retrieval gaps on the most-asked questions</h3><p>Rates, surcharges and bill calculations are among the most common questions for any utility. They sit in a table on a public tariff page, and the assistant still couldn’t answer in English or Arabic. Most likely the tariff tables were never indexed, or were indexed in a format the retriever can’t match.</p><blockquote>“I couldn’t find the specific electricity rate per kWh … in the available context.”</blockquote><p>The response is safe, but each one sends a customer to a call centre that the assistant was meant to relieve.</p></div>
+<div class="finding"><h3>Official sources disagree with each other</h3><p>The tariff page lists one fast-charging price (1.14 + VAT), while the charging regulation and press coverage give another (1.20 + VAT). The assistant quoted one confidently. Likewise, one page says “400+ stations”, a news release says “1,860+ points”, and the assistant said “1,500+”.</p><p>No model can fix inconsistent source content. A content audit before indexing can, along with a test that detects when the same question can retrieve two different numbers.</p></div>
+<div class="finding"><h3>False premises are tolerated, not corrected</h3><p>Asked how to apply for a non-existent 50% student discount, the assistant didn’t invent one, which is good. It also didn’t say the programme doesn’t exist. Instead it offered “steps to apply for any bill discount programs”, which reinforces the user’s false belief.</p></div>
+<div class="finding"><h3>Arabic support stops at the answer</h3><p>Arabic understanding was strong, including Gulf dialect, Arabizi and mid-sentence code-switching, and answers were consistent across languages. But every Arabic answer was followed by English-only suggestion buttons. For an Arabic-first user, the next step in the conversation switches language.</p></div>
+<div class="finding"><h3>Safety behaviour is solid</h3><p>Zero fabricated numbers across 14 prompts, a clean refusal on an off-topic question, and correct context carried into a follow-up. The guardrails are doing their job. The next gains will come from content and retrieval, not from the model.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Recommendations</p>
+<h2>Five fixes, in priority order.</h2>
+<ol class="recs">
+<li><b>Index structured data as structured data.</b> Turn tariff tables, fees and surcharges into clean, dated records the retriever can match, and refresh them on a schedule. Volatile figures like monthly surcharges need an owner and an update trigger.</li>
+<li><b>Run a source-consistency audit.</b> Before indexing, find pages that give different values for the same fact and pick one source of truth. Add a test that flags when one question retrieves conflicting numbers.</li>
+<li><b>Build a golden set of the top 50–100 real questions</b> from call-centre logs, in English, MSA and Gulf dialect, and run it as a regression suite whenever content, prompts or the model change.</li>
+<li><b>Teach the assistant to correct false premises</b> (“There is no 50% student discount. Here are the programmes that do exist …”) and to send off-topic questions to the right authority.</li>
+<li><b>Localise the whole conversation.</b> Suggestions, buttons and links should follow the language of the answer.</li>
+</ol>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Limitations</p>
+<h2>What this study is, and isn’t.</h2>
+<p>This was a single-day, black-box test of one assistant with 14 prompts. It shows patterns, not statistically significant rates. Responses from generative systems can change between runs and over time. Answer keys were built from public sources available on the test date, and where official sources disagreed, that is reported rather than resolved. No adversarial or security testing was done.</p>
+</div></section>
+
+<div class="wrap">
+<div class="cta-band"><div><h2>Want this for your assistant?</h2><p>A free 30-minute review of one AI feature, with a written gap list afterwards.</p></div><a href="https://calendly.com/kyousefju/ai-qa-readiness" target="_blank" rel="noopener noreferrer">Book a free review ↗</a></div>
+</div>
+</main>
+<footer><div class="wrap"><span>© 2026 KHALED YOUSEF · AI QA CONSULTING</span><span><a href="/services">Services</a> · <a href="mailto:kyousefju@gmail.com">kyousefju@gmail.com</a></span></div></footer>
+</body>
+</html>
