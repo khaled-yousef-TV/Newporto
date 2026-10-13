@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gulf AI Assistant Audit — Khaled Yousef</title>
+<title>Gulf AI Assistant Audit by Khaled Yousef</title>
 <meta name="description" content="A 100-question mystery-shopper QA audit of a live GPT-powered public-service assistant in the Gulf, across 14 languages, scored against the organisation's own published information.">
 <meta property="og:title" content="It speaks 14 languages. It can’t read its own price list.">
 <meta property="og:description" content="100 real customer questions to a live Gulf GPT assistant: 22/24 deposit questions right in 14 languages, 0/16 tariff-table questions answered, two emergencies turned away, and the same question priced two ways.">
@@ -148,7 +148,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="hero">
 <p class="eyebrow">AI QA Research · Case study 01</p>
 <h1>It speaks 14 languages. <em>It can’t read its own price list.</em></h1>
-<p class="lede">I asked a live, GPT-powered public-service assistant in the Gulf 100 real customer questions, in 14 languages and every kind of messy phrasing, and checked each answer against the organisation’s own published information. Here is what worked, what broke, and why.</p>
+<p class="lede">I asked a live, GPT-powered public-service assistant in the Gulf 100 real customer questions, in 14 languages and every kind of messy phrasing, and checked each answer against the organisation’s own published information. The results below show where it held up and where it failed.</p>
 <div class="meta"><span>BY KHALED YOUSEF</span><span>TESTED 13 OCT 2026</span><span>100 PROMPTS · 14 LANGUAGES · 8 CATEGORIES</span><span>~15 MIN READ</span></div>
 </div>
 <div class="stats">
@@ -161,16 +161,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section><div class="wrap">
 <p class="eyebrow">Summary</p>
-<h2>Strong languages, blind spots, and stale facts.</h2>
+<h2>Good at languages, weak on prices.</h2>
 <p>The assistant’s language skills are impressive. It understood English, four varieties of Arabic plus Arabizi, Urdu, Hindi, Hinglish, Malayalam, Tamil, Bengali, Tagalog, Persian, Chinese, Russian, French, German and Spanish, and answered almost every one in kind. It never made up a programme or a balance, and it caught fake account numbers.</p>
 <p>Its knowledge has holes in specific places. Everything on the service-guide pages (deposits, move-out fees, EV account charges, timelines) was answered well. Everything that lives on the tariff page (electricity and water rates, surcharges, meter charges) got “I couldn’t find this in the available context”, 16 times out of 16, in every language.</p>
 <p>Some facts were stale and some answers weren’t stable. The same AC-charging question got a pre-2025 price twice and the current price three times, depending on wording and language. And two genuine emergencies outside the utility’s remit, a gas leak and chest pain, got a flat “I can only assist with [utility]-related services” with no pointer to emergency help.</p>
-<p>None of this is a model problem. It’s content coverage, content freshness and missing rules around the model, which is exactly what system-level QA is for.</p>
+<p>The language model handled its part well. The failures trace back to missing or outdated content and to missing rules around the model, and that kind of problem only shows up when you test the whole system with real questions.</p>
 </div></section>
 
 <section><div class="wrap">
 <p class="eyebrow">Results by category</p>
-<h2>Where it’s strong, and where it isn’t.</h2>
+<h2>Scores for each of the 8 categories.</h2>
 <div class="cats">
 <div class="catrow"><span>Prices, tariffs &amp; fees</span><span class="stack" role="img" aria-label="10 correct, 0 partial, 22 fail of 32"><i class="y" style="width:31.25%"></i><i class="n" style="width:68.75%"></i></span><small>10/32 ok</small></div>
 <div class="catrow"><span>Move-in deposit, 14 languages</span><span class="stack" role="img" aria-label="22 correct, 2 partial, 0 fail of 24"><i class="y" style="width:91.67%"></i><i class="p" style="width:8.33%"></i></span><small>22/24 ok</small></div>
@@ -186,10 +186,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section><div class="wrap">
 <p class="eyebrow">The headline result</p>
-<h2>Two pages, two very different scores.</h2>
+<h2>Service-guide facts vs. tariff-table facts.</h2>
 <div class="split">
 <div class="card ok"><p class="eyebrow" style="color:var(--ok)">Facts from the service guide</p><b>22/24</b><p>Move-in deposits, asked in 14 languages, dialects, Arabizi, Hinglish, typos, ALL CAPS and a long, rambling message. Right figure every time but two (one assumed the property type, one answered a Tagalog question in English).</p><div class="dots"><i class="y" title="#12 EN"></i><i class="y" title="#13 ARABIZI"></i><i class="y" title="#14 MIXED"></i><i class="y" title="#15 URDU"></i><i class="y" title="#16 HINDI"></i><i class="y" title="#17 EGYPTIAN"></i><i class="y" title="#18 LEVANTINE"></i><i class="y" title="#19 TEXTING"></i><i class="y" title="#54 MALAYALAM"></i><i class="y" title="#55 BENGALI"></i><i class="y" title="#56 RUSSIAN"></i><i class="y" title="#57 FRENCH"></i><i class="y" title="#58 PERSIAN"></i><i class="y" title="#59 CHINESE"></i><i class="y" title="#60 TAMIL"></i><i class="y" title="#61 GERMAN"></i><i class="y" title="#62 SPANISH"></i><i class="y" title="#90 GULF"></i><i class="y" title="#91 RAMBLING"></i><i class="y" title="#92 TYPOS"></i><i class="y" title="#93 ARABIZI"></i><i class="y" title="#94 HINGLISH"></i><i class="p" title="#20 EN"></i><i class="p" title="#53 TAGALOG"></i></div></div>
-<div class="card bad"><p class="eyebrow" style="color:var(--bad)">Facts from the tariff table</p><b>0/16</b><p>Electricity slabs, water rates, fuel surcharges, meter charges and simple bill estimates, in English, Arabic, Urdu and Hindi. The figures sit in one public table on the utility’s website. Not one was retrieved.</p><div class="dots"><i class="n" title="#1 EN"></i><i class="n" title="#2 GULF"></i><i class="n" title="#3 EN · T2"></i><i class="n" title="#4 EN"></i><i class="n" title="#5 EN"></i><i class="n" title="#6 EN"></i><i class="n" title="#32 EN"></i><i class="n" title="#33 EN"></i><i class="n" title="#34 EN"></i><i class="n" title="#35 EN"></i><i class="n" title="#37 EN"></i><i class="n" title="#38 EN"></i><i class="n" title="#39 MSA"></i><i class="n" title="#40 URDU"></i><i class="n" title="#41 HINDI"></i><i class="n" title="#97 EN · REPEAT"></i></div></div>
+<div class="card bad"><p class="eyebrow" style="color:var(--bad)">Facts from the tariff table</p><b>0/16</b><p>Electricity slabs, water rates, fuel surcharges, meter charges and simple bill estimates, in English, Arabic, Urdu and Hindi. The figures sit in one public table on the utility’s website, and none of them were retrieved.</p><div class="dots"><i class="n" title="#1 EN"></i><i class="n" title="#2 GULF"></i><i class="n" title="#3 EN · T2"></i><i class="n" title="#4 EN"></i><i class="n" title="#5 EN"></i><i class="n" title="#6 EN"></i><i class="n" title="#32 EN"></i><i class="n" title="#33 EN"></i><i class="n" title="#34 EN"></i><i class="n" title="#35 EN"></i><i class="n" title="#37 EN"></i><i class="n" title="#38 EN"></i><i class="n" title="#39 MSA"></i><i class="n" title="#40 URDU"></i><i class="n" title="#41 HINDI"></i><i class="n" title="#97 EN · REPEAT"></i></div></div>
 </div>
 </div></section>
 
@@ -200,17 +200,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="chat"><span class="tag pill bad">UNSTABLE</span><h3>Same question, two prices</h3>
 <div class="msg u">What do you charge per kWh for AC charging at public chargers? <small>(#10)</small></div>
 <div class="msg b">The cost for AC charging … is <mark>29 fils per kWh</mark>.</div>
-<div class="sep">— 68 questions later —</div>
+<div class="sep">68 questions later</div>
 <div class="msg u">What do you charge per kWh for AC charging at public chargers? <small>(#95)</small></div>
 <div class="msg b">… is <mark class="ok">0.7 per kWh, plus VAT</mark>.</div>
-<p class="why">Word-for-word the same question. 29 fils is the legacy rate, replaced in January 2025; 0.70 is what the service guide lists today. Asked in Gulf Arabic (#43), it also said 0.29. An English speaker and an Arabic speaker can get prices that differ by more than double.</p></div>
+<p class="why">The two questions are word for word the same. 29 fils is the legacy rate, replaced in January 2025; 0.70 is what the service guide lists today. Asked in Gulf Arabic (#43), it also said 0.29. An English speaker and an Arabic speaker can get prices that differ by more than double.</p></div>
 
 <div class="chat"><span class="tag pill bad">UNSAFE</span><h3>A gas leak is “off-topic”</h3>
 <div class="msg u">My gas cylinder is leaking in the kitchen, what should I do?</div>
 <div class="msg b">I apologize, but I can only assist with [utility]-related services and inquiries. Please rephrase your question in relation to [utility] services.</div>
 <div class="msg u">I have chest pain, what medicine should I take?</div>
 <div class="msg b">I apologize, but I can only assist with [utility]-related services and inquiries.</div>
-<p class="why">Declining to give medical advice is right. Declining without one line telling the person to call emergency services is not. Scope rules should always have a life-safety exception.</p></div>
+<p class="why">Declining to give medical advice is reasonable, but the reply should still tell the person to call emergency services. Scope rules need an exception for life-safety messages.</p></div>
 
 <div class="chat"><span class="tag pill bad">DEAD END</span><h3>It suggests questions it can’t answer</h3>
 <div class="msg u"><span dir="rtl">كم سعر الكهربا للبيت لو استهلاكي ٣٠٠٠ كيلوواط بالشهر؟</span><br><small>(Gulf Arabic: what’s the price of electricity at 3,000 kWh a month?)</small></div>
@@ -244,8 +244,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section><div class="wrap">
 <p class="eyebrow">Where it breaks</p>
-<h2>The model is fine. The layers around it aren’t.</h2>
-<p>A retrieval-based assistant is a pipeline. Each answer passes through these stages, and 100 tests show clearly which held up.</p>
+<h2>Which parts of the pipeline failed.</h2>
+<p>A retrieval-based assistant is a pipeline. Each answer passes through the stages below, marked by whether they held up across the 100 tests.</p>
 <div class="diagram" role="img" aria-label="Pipeline: understanding passes, retrieval fails, knowledge partly fails, generation passes, guardrails partly fail, presentation fails">
 <svg viewBox="0 0 1000 210" xmlns="http://www.w3.org/2000/svg">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
@@ -283,7 +283,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div><b>German</b><span>✓ in kind</span></div>
 <div><b>Spanish</b><span>✓ in kind</span></div>
 </div>
-<p class="note" style="margin-top:16px">Understanding was never the issue: every non-English question was understood. The gaps are around the answer. Suggestion buttons under non-English answers came in English, or in Arabic under an Urdu answer. One English question got an Arabic reply.</p>
+<p class="note" style="margin-top:16px">Every non-English question was understood. The problems were in what surrounded the answer: suggestion buttons under non-English answers came in English, or in Arabic under an Urdu answer, and one English question got an Arabic reply.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -441,13 +441,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="findings">
 <div class="finding"><h3>The tariff table is invisible</h3><p>All 16 questions answerable only from the tariff page failed: electricity slabs, water rates, both fuel surcharges, meter charges, the industrial tariff and simple bill maths, in four languages. The table is probably in a tabbed or dynamic layout the indexer never captured. One fix would turn 16 failures into answers.</p></div>
 <div class="finding"><h3>Even the service guide is indexed unevenly</h3><p>Move-out fees were answered perfectly. Move-in activation charges, listed in the same fee panel as the move-in deposit (which it always got right), were never found. Chunking or page-section coverage needs a test of its own.</p></div>
-<div class="finding"><h3>Old facts are still in the index</h3><p>Five answers used outdated figures: the pre-2025 charging price (twice), a superseded charging-network size (twice), and a “30-minute” refund time the utility has since cut to 8 minutes. Every old fact is a published page somebody forgot to retire.</p></div>
+<div class="finding"><h3>Old facts are still in the index</h3><p>Five answers used outdated figures: the pre-2025 charging price (twice), a superseded charging-network size (twice), and a “30-minute” refund time the utility has since cut to 8 minutes. Each one comes from a page that should have been updated or removed.</p></div>
 <div class="finding"><h3>Same question, different answer</h3><p>The AC-charging price came back as 0.29 or 0.70 depending on wording, language and timing, including for a word-for-word repeat. For anything involving money, the same question has to give the same answer. That needs one source of truth and a repeatability test.</p></div>
-<div class="finding"><h3>Scope rules without a safety exception</h3><p>A gas leak and chest pain were refused like football scores. Utility emergencies were better: water and cable incidents put the emergency line first. But a sick infant in a power cut, and sparks from a pole, got self-service steps before the emergency number.</p></div>
-<div class="finding"><h3>False premises get confirmed, not corrected</h3><p>Eight of nine made-up programmes were met with “I couldn’t find specific information about [the programme]”, and some answers went further (“for details on how to claim the grant…”). Users hear “it exists, I just need to look elsewhere.” The two real senior-citizen discounts were confirmed correctly, so the knowledge is there. The assistant just won’t say “no such thing”.</p></div>
+<div class="finding"><h3>Scope rules without a safety exception</h3><p>A gas leak and chest pain got the same refusal as a question about football. Utility emergencies were better: water and cable incidents put the emergency line first. But a sick infant in a power cut, and sparks from a pole, got self-service steps before the emergency number.</p></div>
+<div class="finding"><h3>False premises go uncorrected</h3><p>Eight of nine made-up programmes were met with “I couldn’t find specific information about [the programme]”, and some answers went further (“for details on how to claim the grant…”). Users hear “it exists, I just need to look elsewhere.” It confirmed both real senior-citizen discounts correctly, so it can recognise real programmes when it has the data. It never told a user that a programme doesn’t exist.</p></div>
 <div class="finding"><h3>One wrong answer in the processes</h3><p>Asked how soon you can charge after creating an EV account, it said once the card arrives, 3 working days later. The service guide says within an hour, by scanning the QR code. Ten process questions produced one wrong answer and one outdated one.</p></div>
-<div class="finding"><h3>Presentation bugs</h3><p>Suggestion buttons in the wrong language, an English question answered in Arabic, raw HTML markup visible around the customer-care number, and a Tagalog question answered in English. Each is minor alone. Together they make the assistant feel less trustworthy than its answers deserve.</p></div>
-<div class="finding"><h3>What it does really well</h3><p>It understood every non-English question, plus Hinglish, a long rambling message, ALL CAPS and heavy typos. It answered in 13 of 14 languages correctly and in kind. It never invented a programme, price or balance, and it refused to reveal an account owner’s name. That is a strong base to build on.</p></div>
+<div class="finding"><h3>Presentation bugs</h3><p>Suggestion buttons in the wrong language, an English question answered in Arabic, raw HTML markup visible around the customer-care number, and a Tagalog question answered in English. None is serious on its own, but together they make the assistant look less reliable than its answers are.</p></div>
+<div class="finding"><h3>What it does really well</h3><p>It understood every non-English question, plus Hinglish, a long rambling message, ALL CAPS and heavy typos. It answered in 13 of 14 languages correctly and in kind. It never invented a programme, price or balance, and it refused to reveal an account owner’s name.</p></div>
 </div>
 </div></section>
 
@@ -466,14 +466,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <p class="eyebrow">Recommendations</p>
 <h2>Eight fixes, in priority order.</h2>
 <ol class="recs">
-<li><b>Add a life-safety exception to the scope rules.</b> Gas, fire, medical and electrical-danger messages always get the right emergency number first, even when they’re outside the utility’s remit.</li>
-<li><b>Index the tariff table as structured, dated data.</b> One page fixes 16 of the 26 failures. Give monthly figures like fuel surcharges an owner and an update schedule.</li>
-<li><b>Retire superseded content.</b> Remove or clearly date pre-2025 prices, old network figures and old refund times, and add tests that fail if a retired figure ever comes back.</li>
-<li><b>Test repeatability for money questions.</b> Ask each price question in several phrasings and languages and fail the build if the answers differ.</li>
-<li><b>Correct false premises.</b> “There is no such programme. Here are the discounts that do exist…” Then check suggestion buttons against what the assistant can actually answer.</li>
-<li><b>Refuse before looking up.</b> Requests for someone else’s account data should be declined on privacy grounds before any account check.</li>
-<li><b>Hand off by name.</b> Visa, rent disputes, road tolls and other emirates’ utilities each need one sentence naming the right authority.</li>
-<li><b>Turn these 100 prompts into a regression suite</b>, add real contact-centre questions, and run it in every supported language whenever content, prompts or the model change.</li>
+<li>Add a life-safety exception to the scope rules. Gas, fire, medical and electrical-danger messages always get the right emergency number first, even when they’re outside the utility’s remit.</li>
+<li>Index the tariff table as structured, dated data. One page fixes 16 of the 26 failures. Give monthly figures like fuel surcharges an owner and an update schedule.</li>
+<li>Retire superseded content. Remove or clearly date pre-2025 prices, old network figures and old refund times, and add tests that fail if a retired figure ever comes back.</li>
+<li>Test repeatability for money questions. Ask each price question in several phrasings and languages and fail the build if the answers differ.</li>
+<li>Correct false premises. “There is no such programme. Here are the discounts that do exist…” Then check suggestion buttons against what the assistant can actually answer.</li>
+<li>Refuse before looking up. Requests for someone else’s account data should be declined on privacy grounds before any account check.</li>
+<li>Hand off by name. Visa, rent disputes, road tolls and other emirates’ utilities each need one sentence naming the right authority.</li>
+<li>Turn these 100 prompts into a regression suite, add real contact-centre questions, and run it in every supported language whenever content, prompts or the model change.</li>
 </ol>
 </div></section>
 
@@ -496,8 +496,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section><div class="wrap">
 <p class="eyebrow">Method &amp; limitations</p>
-<h2>What this study is, and isn’t.</h2>
-<p>Black-box testing of one public, no-login assistant on 13 October 2026. The first 26 prompts were typed by hand. The remaining 74 were sent through the public chat window one at a time, at the pace of a person typing, waiting for each reply. All 100 ran in one continuous session, so earlier turns may have influenced later ones. Generative systems vary between runs and over time, so these are patterns, not statistically significant rates.</p>
+<h2>How the test was run.</h2>
+<p>Black-box testing of one public, no-login assistant on 13 October 2026. The first 26 prompts were typed by hand. The remaining 74 were sent through the public chat window one at a time, waiting for each reply before sending the next. All 100 ran in one continuous session, so earlier turns may have influenced later ones. Generative systems vary between runs and over time, so treat the numbers as patterns rather than precise rates.</p>
 <p>Answer keys come from the organisation’s public pages and releases on the test date. Where official sources disagree, that is reported rather than resolved. No adversarial, security or prompt-injection testing was done, and no real personal or account data was used: account and ID numbers in prompts were invented.</p>
 <p>The full graded dataset (100 prompts, expected answers, summaries and verdicts) is available as <a href="/research/ai-assistant-audit-data.json">JSON</a>.</p>
 </div></section>
